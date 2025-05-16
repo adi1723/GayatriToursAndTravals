@@ -1,11 +1,4 @@
-<<<<<<< HEAD
 Flask
 Flask-SQLAlchemy
 Werkzeug
 gunicorn
-=======
-Flask
-Flask-SQLAlchemy
-Werkzeug
-gunicorn
->>>>>>> d0b2d98 (Update: modified client_packages.html and added requirements.txt)
