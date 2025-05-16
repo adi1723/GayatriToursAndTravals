@@ -6,6 +6,139 @@
   <title>Luxury Cab Packages from Pune</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
+    /* Global Reset and Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+/* Top Bar */
+/* Reset some defaults */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Beautiful Top Bar */
+.top-bar {
+  background: linear-gradient(to right, #141e30, #243b55, #1a2a3a);
+  color: #ffffff;
+  padding: 6px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 15px;
+  height: 40px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.top-bar .contact-info span {
+  margin-right: 15px;
+}
+
+.top-bar .client-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logout-btn {
+  background-color: #ff4d4d;
+  padding: 2px 8px;
+  border-radius: 4px;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+
+.logout-btn:hover {
+  background-color: #e60000;
+}
+
+.top-bar .social-icons a {
+  color: #ffffff;
+  font-size: 16px;
+  margin-left: 12px;
+  transition: color 0.3s;
+}
+
+.top-bar .social-icons a:hover {
+  color: #f0c330;
+}
+
+/* Beautiful Navbar */
+/* Navbar Styling */
+.navbar {
+  background: linear-gradient(to right, #1e3c72, #2a5298, #1e3c72);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 20px;
+  height: 70px;
+  font-family: 'Segoe UI', sans-serif;
+  color: #ffffff;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo container and alignment */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo img {
+  height: 50px;
+  width: auto;
+  border-radius: 8px;
+}
+
+/* Company name styling */
+.logo-name h1 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.logo-name span {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  color: #ffa500; /* Accent color for 'Tours & Travels' */
+  margin-top: 2px;
+}
+
+/* Nav Links */
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+
+.nav-links li a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 10px;
+  font-weight: 500;
+  padding: 6px 5px;
+  transition: background 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #243b55;
+  background-color: #243b55;
+}
+
     body {
       margin: 0;
       padding: 0;
@@ -167,6 +300,51 @@
   </style>
 </head>
 <body>
+<!-- Top Header -->
+  <header class="top-bar">
+    <div class="contact-info">
+      <span>☎ +91 9421637393</span>
+      <span>☎ +91 9022951550</span>
+      <span>✉ shivamsevakendra007@gmail.com</span>
+    </div>
+
+    <div class="client-name">
+      {% if client_name %}
+        <span>Welcome, {{ client_name }}!</span>
+        <a href="/logout" class="logout-btn">Logout</a>
+      {% else %}
+        <span>Welcome, Guest!</span>
+      {% endif %}
+    </div>
+
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="logo-container">
+      <div class="logo">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Gayatri Tours & Travels">
+      </div>
+      <div class="logo-name">
+        <h1>Gayatri <span>Tours & Travels</span></h1>
+      </div>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="{{ url_for('client_home') }}">Home</a></li>
+      <li><a href="{{ url_for('client_about') }}">About</a></li>
+      <li><a href="{{ url_for('calculate') }}">Services</a></li>
+      <li><a href="{{ url_for('client_packages') }}">Packages</a></li>
+      <li><a href="/client/vehicles">Booking</a></li>
+      <li><a href="">Gallery</a></li>
+      <li><a href="">Blogs</a></li>
+      <li><a href="">Contact</a></li>
+  </ul>
+  </nav>
 
 <h1>Luxury Cab Packages from Pune</h1>
 
