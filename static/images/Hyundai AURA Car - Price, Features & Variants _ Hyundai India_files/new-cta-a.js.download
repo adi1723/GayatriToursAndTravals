@@ -1,0 +1,300 @@
+
+//before submit, the function checks validation.
+validationCtab = function(dialog){
+	var ctaNum	= dialog.getField("./ctaNum").getRawValue();
+	
+	var ctaTitle1= dialog.getField("./ctaTitle1").getRawValue();
+	var ctaTitle2= dialog.getField("./ctaTitle2").getRawValue();
+	var ctaTitle3= dialog.getField("./ctaTitle3").getRawValue();
+	var ctaTitle4= dialog.getField("./ctaTitle4").getRawValue();
+	var ctaTitle5= dialog.getField("./ctaTitle5").getRawValue();
+	if(num.getValue()=='one'){
+	    if(ctaTitle1.length==0){
+	        console.log("CTA1 Title required.");
+	        return false;
+	    }		
+	}else if(num.getValue()=='two'){
+	    if(ctaTitle1.length==0){	
+	        return false;
+	    }
+	    if(ctaTitle2.length==0){
+	        alert("CTA2 Title required.");
+	        return false;
+	    }	    
+	}else if(num.getValue()=='three'){
+	    if(ctaTitle1.length==0){
+	        alert("CTA1 Title required.");
+	        return false;
+	    }
+	    if(ctaTitle2.length==0){
+	        alert("CTA2 Title required.");
+	        return false;
+	    }
+	    if(ctaTitle3.length==0){
+	        alert("CTA3 Title required.");
+	        return false;
+	    }
+	}else if(num.getValue()=='four'){
+	    if(ctaTitle1.length==0){
+	        alert("CTA1 Title required.");
+	        return false;
+	    }
+	    if(ctaTitle2.length==0){
+	        alert("CTA2 Title required.");
+	        return false;
+	    }
+	    if(ctaTitle3.length==0){
+	        alert("CTA3 Title required.");
+	        return false;
+	    }
+	    if(ctaTitle4.length==0){
+	        alert("CTA4 Title required.");
+	        return false;
+	    }
+	}else if(num.getValue()=='five'){
+	    if(ctaTitle1.length==0){
+	        alert("CTA1 Title required.");
+	        return false;
+	    }
+	    if(ctaTitle2.length==0){
+	        alert("CTA2 Title required.");
+	        return false;
+	    }
+	    if(ctaTitle3.length==0){
+	        alert("CTA3 Title required.");
+	        return false;
+	    }
+	    if(ctaTitle4.length==0){
+	        alert("CTA4 Title required.");
+	        return false;
+	    }
+	    if(ctaTitle5.length==0){
+	        alert("CTA5 Title required.");
+	        return false;
+	    }
+	}
+}
+
+/*
+hideCtaByChanged = function(comp, val, isChecked) { 
+	console.log("CTAA hideCtaByChanged==>> comp : " + comp + "\t val : " + val + "\t isChecked : " + isChecked);
+
+	var panel = comp.findParentByType("panel");  
+
+	var ctaTitle1= panel.getComponent("ctaTitle1");  
+	var ctaUrl1= panel.getComponent("ctaUrl1");  
+	var ctaFontColor1= panel.getComponent("ctaFontColor1");  
+	var ctaBtnColor1= panel.getComponent("ctaBtnColor1"); 
+
+	var ctaTitle2= panel.getComponent("ctaTitle2");  
+	var ctaUrl2= panel.getComponent("ctaUrl2");  
+	var ctaFontColor2= panel.getComponent("ctaFontColor2");  
+	var ctaBtnColor2= panel.getComponent("ctaBtnColor2");  
+
+	var ctaTitle3= panel.getComponent("ctaTitle3");  
+	var ctaUrl3= panel.getComponent("ctaUrl3");  
+	var ctaFontColor3= panel.getComponent("ctaFontColor3");  
+	var ctaBtnColor3= panel.getComponent("ctaBtnColor3");
+
+	var ctaTitle4= panel.getComponent("ctaTitle4");  
+	var ctaUrl4= panel.getComponent("ctaUrl4");  
+	var ctaFontColor4= panel.getComponent("ctaFontColor4");  
+	var ctaBtnColor4= panel.getComponent("ctaBtnColor4");
+
+	if(val=='one'){ 
+		ctaTitle1.show();
+		ctaUrl1.show();
+		ctaFontColor1.show();
+		ctaBtnColor1.show();
+	 
+		ctaTitle2.hide();
+		ctaUrl2.hide();
+		ctaFontColor2.hide();
+		ctaBtnColor2.hide();
+		
+		ctaTitle3.hide();
+		ctaUrl3.hide();
+		ctaFontColor3.hide();
+		ctaBtnColor3.hide();
+
+		ctaTitle4.hide();
+		ctaUrl4.hide();
+		ctaFontColor4.hide();
+		ctaBtnColor4.hide();    
+
+	}else if(val=='two'){ 
+		ctaTitle1.show();
+		ctaUrl1.show();
+		ctaFontColor1.show();
+		ctaBtnColor1.show();
+		
+		ctaTitle2.show();
+		ctaUrl2.show();
+		ctaFontColor2.show();
+		ctaBtnColor2.show();
+		
+		ctaTitle3.hide();
+		ctaUrl3.hide();
+		ctaFontColor3.hide();
+		ctaBtnColor3.hide();
+		
+		ctaTitle4.hide();
+		ctaUrl4.hide();
+		ctaFontColor4.hide();
+		ctaBtnColor4.hide();
+	}else if(val=='three'){ 
+		ctaTitle1.show();
+		ctaUrl1.show();
+		ctaFontColor1.show();
+		ctaBtnColor1.show();
+		
+		ctaTitle2.show();
+		ctaUrl2.show();
+		ctaFontColor2.show();
+		ctaBtnColor2.show();
+		
+		ctaTitle3.show();
+		ctaUrl3.show();
+		ctaFontColor3.show();
+		ctaBtnColor3.show();
+		
+		ctaTitle4.hide();
+		ctaUrl4.hide();
+		ctaFontColor4.hide();
+		ctaBtnColor4.hide();
+	}else if(val=='four'){ 
+		ctaTitle1.show();
+		ctaUrl1.show();
+		ctaFontColor1.show();
+		ctaBtnColor1.show();
+		
+		ctaTitle2.show();
+		ctaUrl2.show();
+		ctaFontColor2.show();
+		ctaBtnColor2.show();	
+		
+		ctaTitle3.show();
+		ctaUrl3.show();
+		ctaFontColor3.show();
+		ctaBtnColor3.show();
+		
+		ctaTitle4.show();
+		ctaUrl4.show();
+		ctaFontColor4.show();
+		ctaBtnColor4.show();				
+	}
+}
+
+
+hideCtaByLoad = function(box, dialog){
+	console.log("CTAA hideCtaByLoad==>> box : " + box + "\t dialog : " + dialog);
+
+	var panel = box.findParentByType("panel");
+
+    var num=panel.getComponent("ctaNum");   
+
+    var ctaTitle1= panel.getComponent("ctaTitle1");  
+    var ctaUrl1= panel.getComponent("ctaUrl1");  
+    var ctaFontColor1= panel.getComponent("ctaFontColor1");  
+    var ctaBtnColor1= panel.getComponent("ctaBtnColor1");  
+    var ctaButtonIcon1= panel.getComponent("ctaButtonIcon1"); 
+
+    var ctaTitle2= panel.getComponent("ctaTitle2");  
+    var ctaUrl2= panel.getComponent("ctaUrl2");  
+    var ctaFontColor2= panel.getComponent("ctaFontColor2");  
+    var ctaBtnColor2= panel.getComponent("ctaBtnColor2");  
+    
+    var ctaTitle3= panel.getComponent("ctaTitle3");  
+    var ctaUrl3= panel.getComponent("ctaUrl3");  
+    var ctaFontColor3= panel.getComponent("ctaFontColor3");  
+    var ctaBtnColor3= panel.getComponent("ctaBtnColor3"); 
+
+    var ctaTitle4= panel.getComponent("ctaTitle4");  
+    var ctaUrl4= panel.getComponent("ctaUrl4");  
+    var ctaFontColor4= panel.getComponent("ctaFontColor4");  
+    var ctaBtnColor4= panel.getComponent("ctaBtnColor4");
+
+    if(num.getValue()=='one'){ 
+        ctaTitle1.show();
+        ctaUrl1.show();
+        ctaFontColor1.show();
+        ctaBtnColor1.show();
+
+        ctaTitle2.hide();
+        ctaUrl2.hide();
+        ctaFontColor2.hide();
+        ctaBtnColor2.hide();
+
+        ctaTitle3.hide();
+        ctaUrl3.hide();
+        ctaFontColor3.hide();
+        ctaBtnColor3.hide();
+
+        ctaTitle4.hide();
+        ctaUrl4.hide();
+        ctaFontColor4.hide();
+        ctaBtnColor4.hide();
+
+    }else if(num.getValue()=='two'){ 
+        ctaTitle1.show();
+        ctaUrl1.show();
+        ctaFontColor1.show();
+        ctaBtnColor1.show();
+        
+        ctaTitle2.show();
+        ctaUrl2.show();
+        ctaFontColor2.show();
+        ctaBtnColor2.show();
+
+        ctaTitle3.hide();
+        ctaUrl3.hide();
+        ctaFontColor3.hide();
+        ctaBtnColor3.hide();
+
+        ctaTitle4.hide();
+        ctaUrl4.hide();
+        ctaFontColor4.hide();
+        ctaBtnColor4.hide();
+    }else if(num.getValue()=='three'){ 
+        ctaTitle1.show();
+        ctaUrl1.show();
+        ctaFontColor1.show();
+        ctaBtnColor1.show();
+        
+        ctaTitle2.show();
+        ctaUrl2.show();
+        ctaFontColor2.show();
+        ctaBtnColor2.show();
+
+        ctaTitle3.show();
+        ctaUrl3.show();
+        ctaFontColor3.show();
+        ctaBtnColor3.show();
+
+        ctaTitle4.hide();
+        ctaUrl4.hide();
+        ctaFontColor4.hide();
+        ctaBtnColor4.hide();
+    }else if(num.getValue()=='four'){ 
+        ctaTitle1.show();
+        ctaUrl1.show();
+        ctaFontColor1.show();
+        ctaBtnColor1.show();
+        
+        ctaTitle2.show();
+        ctaUrl2.show();
+        ctaFontColor2.show();
+        ctaBtnColor2.show();
+
+        ctaTitle3.show();
+        ctaUrl3.show();
+        ctaFontColor3.show();
+        ctaBtnColor3.show();
+
+        ctaTitle4.show();
+        ctaUrl4.show();
+        ctaFontColor4.show();
+        ctaBtnColor4.show();        
+    }
+
+}*/

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Luxury Cab Packages from Pune</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      padding: 30px 20px;
+      background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientText 5s infinite alternate;
+    }
+
+    @keyframes gradientText {
+      0% { background-position: 0%;}
+      100% { background-position: 100%;}
+    }
+
+    .packages-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+      padding: 20px;
+    }
+
+    .card {
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      overflow: hidden;
+      width: 330px;
+      box-shadow: 0 0 20px rgba(0, 200, 255, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 30px rgba(0, 200, 255, 0.5);
+    }
+
+    .carousel {
+      height: 200px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .carousel img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .carousel img.active {
+      opacity: 1;
+      position: relative;
+    }
+
+    .card-content {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .offer-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: #00bfff;
+      padding: 6px 14px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      color: white;
+      border-radius: 20px;
+      box-shadow: 0 0 8px rgba(0, 191, 255, 0.5);
+    }
+
+    .route {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #aeefff;
+      text-shadow: 0 0 6px rgba(0, 255, 255, 0.2);
+    }
+
+    .price-row {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .round-trip-price del {
+      color: red;
+      text-decoration: line-through;
+      text-decoration-color: red; /* ensures red line */
+      font-weight: 500;
+    }
+
+
+    .price {
+      font-size: 1.1rem;
+      color: #ffd700;
+      font-weight: 500;
+    }
+
+    .round-trip-price {
+      font-size: 1.05rem;
+      color: #00ffff;
+      font-weight: 600;
+    }
+
+    .round-trip-price del {
+      color: #89eaff;
+      font-size: 0.9rem;
+      margin-left: 6px;
+    }
+    .crossed-price {
+  color: red;
+  text-decoration: line-through;
+  font-weight: bold;
+}
+
+
+    .discount {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #14f1f1;
+    }
+
+    .distance {
+      font-size: 0.95rem;
+      color: #cce6ff;
+    }
+
+    .luxury-desc {
+      font-size: 0.9rem;
+      font-style: italic;
+      color: #eeeeff;
+    }
+
+    @media (max-width: 700px) {
+      .packages-container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<h1>Luxury Cab Packages from Pune</h1>
+
+<div class="packages-container">
+
+  <!-- Card 1 -->
+  <div class="card">
+    <div class="carousel">
+      <img src="https://tse2.mm.bing.net/th?id=OIP.-1XERk5tKPvY2wByC05jQQHaE8&pid=Api&P=0&h=180" />
+      <img src="https://tse3.mm.bing.net/th?id=OIP.UVasaYs2knTBo_bd1-pfpwHaFg&pid=Api&P=0&h=180" class="active" />
+      <img src="https://tse4.mm.bing.net/th?id=OIP.MbHkqfu4VUpzxoIIhlct4wHaEo&pid=Api&P=0&h=180" />
+    </div>
+    <div class="card-content">
+      <div class="offer-badge">15% OFF</div>
+      <div class="route">Pune to Mumbai</div>
+      <div class="price-row">
+        <div class="price">🚘 One Way: ₹3,299</div>
+        <div class="round-trip-price">🔁 Round Trip: ₹5,499 <span class="crossed-price">₹6,500</span></div>
+        <div class="discount">Save 15% on round trip!</div>
+      </div>
+      <div class="distance">📍 160 km | Approx. 3 hrs</div>
+      <div class="luxury-desc">Luxury Sedan • AC • WiFi • Bottled Water</div>
+    </div>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="card">
+    <div class="carousel">
+      <img src="https://tse4.mm.bing.net/th?id=OIP.pFLdsNun8MD72XARTIpxCAHaEK&pid=Api&P=0&h=180" class="active" />
+      <img src="https://tse1.mm.bing.net/th?id=OIP.4kqJJvDTEHw3af8_iFEk6wHaDt&pid=Api&P=0&h=180" />
+      <img src="https://tse3.mm.bing.net/th?id=OIP.G8bUV4qjUXIROhMzEVeAjQHaEK&pid=Api&P=0&h=180" />
+    </div>
+    <div class="card-content">
+      <div class="offer-badge">15% OFF</div>
+      <div class="route">Pune to Nashik</div>
+      <div class="price-row">
+        <div class="price">🚘 One Way: ₹4,599</div>
+        <div class="round-trip-price">🔁 Round Trip: ₹7,599 <del>₹9000</del></div>
+        <div class="discount">Save 15% on round trip!</div>
+      </div>
+      <div class="distance">📍 230 km | Approx. 4.5 hrs</div>
+      <div class="luxury-desc">Luxury SUV • AC • WiFi • Refreshments</div>
+    </div>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="card">
+    <div class="carousel">
+      <img src="https://tse2.mm.bing.net/th?id=OIP.c7lUzTY9wwFhovrvRyZA4wHaE8&pid=Api&P=0&h=180" class="active" />
+      <img src="https://tse2.mm.bing.net/th?id=OIP.PTzo8WhfjX65KexO0ezQnQHaE8&pid=Api&P=0&h=180" />
+      <img src="https://tse4.mm.bing.net/th?id=OIP.DfuWQ1F9aywSrxQHaEK&pid=Api&P=0&h=180" />
+    </div>
+    <div class="card-content">
+      <div class="offer-badge">30% OFF</div>
+      <div class="route">Pune to Alibaug</div>
+      <div class="price-row">
+        <div class="price">🚘 One Way: ₹2,999</div>
+        <div class="round-trip-price">🔁 Round Trip: ₹5,099 <del>₹6000</del></div>
+        <div class="discount">Save 30% on round trip!</div>
+      </div>
+      <div class="distance">📍 140 km | Approx. 3.5 hrs</div>
+      <div class="luxury-desc">Luxury Sedan • AC • WiFi • Beach Kit</div>
+    </div>
+  </div>
+
+  <!-- Card 4 -->
+    <div class="card">
+    <div class="carousel">
+      <img src="https://tse2.mm.bing.net/th?id=OIP.c7lUzTY9wwFhovrvRyZA4wHaE8&pid=Api&P=0&h=180" class="active" />
+      <img src="https://tse2.mm.bing.net/th?id=OIP.PTzo8WhfjX65KexO0ezQnQHaE8&pid=Api&P=0&h=180" />
+      <img src="https://tse4.mm.bing.net/th?id=OIP.DfuWQ1F9aywSrxQHaEK&pid=Api&P=0&h=180" />
+    </div>
+    <div class="card-content">
+      <div class="offer-badge">15% OFF</div>
+      <div class="route">पुणे ते त्र्यंबकेश्वर</div>
+      <div class="price-row">
+        <div class="price">🚘 One Way: ₹3,990</div>
+        <div class="round-trip-price">🔁 Round Trip: ₹6,783 <del>₹7,980</del></div>
+        <div class="discount">Save 15% on round trip!</div>
+      </div>
+      <div class="distance">📍 190 km | Approx. 4 hrs</div>
+      <div class="luxury-desc">Luxury Sedan • AC • WiFi • Bottled Water</div>
+    </div>
+  </div>
+  <!-- Card 5 -->
+    <div class="card">
+    <div class="carousel">
+      <img src="https://tse2.mm.bing.net/th?id=OIP.c7lUzTY9wwFhovrvRyZA4wHaE8&pid=Api&P=0&h=180" class="active" />
+      <img src="https://tse2.mm.bing.net/th?id=OIP.PTzo8WhfjX65KexO0ezQnQHaE8&pid=Api&P=0&h=180" />
+      <img src="https://tse4.mm.bing.net/th?id=OIP.DfuWQ1F9aywSrxQHaEK&pid=Api&P=0&h=180" />
+    </div>
+    <div class="card-content">
+  <div class="offer-badge">15% OFF</div>
+  <div class="route">पुणे ते वणी (सप्तश्रुंगी गड)</div>
+  <div class="price-row">
+    <div class="price">🚘 One Way: ₹2,100</div>
+    <div class="round-trip-price">🔁 Round Trip: ₹3,570 <del>₹4,200</del></div>
+    <div class="discount">Save 15% on round trip!</div>
+  </div>
+  <div class="distance">📍 100 km | Approx. 2.5 hrs</div>
+  <div class="luxury-desc">Luxury Sedan • AC • WiFi • Bottled Water</div>
+</div>
+  </div>
+
+</div>
+
+<script>
+  // Fade-in carousel per card
+  document.querySelectorAll(".carousel").forEach((carousel) => {
+    const images = carousel.querySelectorAll("img");
+    let current = 0;
+    setInterval(() => {
+      images[current].classList.remove("active");
+      current = (current + 1) % images.length;
+      images[current].classList.add("active");
+    }, 3000);
+  });
+</script>
+
+</body>
+</html>

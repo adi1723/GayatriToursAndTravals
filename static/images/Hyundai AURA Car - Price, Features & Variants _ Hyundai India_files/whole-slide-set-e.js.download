@@ -1,0 +1,93 @@
+/*
+	[PWSE] Whole slide set E
+*/
+
+;(function ( $, responsive ) {
+	
+	
+	$(document).ready(function(){
+		// init
+
+		if($(".pwseWrap").length>0){
+
+			var wrapClass = $(".pwseWrap");
+			var slideComponentClass = ".pwseWrap .galleryWrap";
+			var galleryWraps = wrapClass.find(".galleryWrap");
+			
+			responsive.addListener( 'resize-width', function (e) {
+					//console.log(e.responsiveType);
+					if ( e.responsiveType === 'S' ) {
+						// If Mobile
+						
+						if(wrapClass.hasClass("mobile")){
+							return false;
+						} else {
+							wrapClass.removeClass("pc");
+							wrapClass.removeClass("tablet");
+							wrapClass.addClass("mobile");
+							galleryWraps.ixSlideMax( "clear" );
+							galleryWraps.on('ixSlideMax:init', function(){
+								ixSlider_pagerCountControl();
+							}).ixSlideMax({"view-length":2});
+							galleryWraps.ixSlideMax( "resize" );
+						}
+						
+					} else {
+						// If Tablet PC
+						if(wrapClass.hasClass("pc")){
+							return false;
+						} else {
+							wrapClass.addClass("pc");
+							wrapClass.removeClass("tablet");
+							wrapClass.removeClass("mobile");
+							galleryWraps.ixSlideMax( "clear" );
+							galleryWraps.on('ixSlideMax:init', function(){
+								ixSlider_pagerCountControl();
+							}).ixSlideMax({"view-length":4});
+							galleryWraps.ixSlideMax( "resize" );
+						}
+					}
+				});
+			$(window).resize();
+			
+			//Event
+			galleryWraps.on( 'ixSlideMax:change', function() {});
+
+			$(window).resize(function(){
+				galleryWraps.ixSlideMax( "resize" );
+			});
+
+		}
+		// pager 갯수 채크 : 1개 이하 일 때  prev, next, pager 숨김
+		function ixSlider_pagerCountControl(){
+			var countSlideItems =$(slideComponentClass + " .ix-btn").length;
+			if(countSlideItems <= 1){
+				$(slideComponentClass + " .ix-controller").hide();
+			} else {
+				$(slideComponentClass + " .ix-controller").show();
+			}
+		}
+		
+		// 180709 slide button vertical middle
+		function arrowHgt (){
+			$('.pwseWrap .galleryWrap').each(function(){
+				var btnHH = $(this).find('.sliderBtnWrap button').height();
+				if ($(this).hasClass('colLg4')) {
+					var imgHH4 = $('.pwseWrap .colLg4').find('.ix-list-items img').height();
+					$('.pwseWrap .colLg4').find('.sliderBtnWrap button').css({'top' : imgHH4/2});
+				} else if ($(this).hasClass('colLg3')) {
+					var imgHH3 = $('.pwseWrap .colLg3').find('.ix-list-items img').height();
+					$('.pwseWrap .colLg3').find('.sliderBtnWrap button').css({'top' : imgHH3/2});
+				} else {
+					var imgHH = $('.pwseWrap .colLg2').find('.ix-list-items img').height();
+					$('.pwseWrap .colLg2').find('.sliderBtnWrap button').css({'top' : imgHH/2});
+				}
+				$(this).find('.sliderBtnWrap button').css({'margin-top' : -btnHH/2});
+			});
+		}
+		$(document).ready(arrowHgt);
+		$(window).resize(arrowHgt);
+		// /180709 slide button vertical middle
+		
+	});
+})( jQuery, hmc.responsive );

@@ -1,0 +1,61 @@
+$(function(){
+    $('div.pwsdTit').each(function(idx){
+        if($(this).children().text()==''){
+            $(this).hide();
+        }
+    });
+    
+    for(var i=1; i<9; i++){
+	    $('div.pwsdTxt'+i).each(function(idx){
+	        var pwsdtext = $(this).children().text().replace(/\s/g, '');
+	        if(pwsdtext==''){
+	            $(this).hide();
+	        }
+	    });
+    }
+});
+
+/*
+	PWSD : PIP_Whole_slide_set_D
+*/
+
+;(function ( $ ) {
+	
+	
+	if($(".pwsdWrap").length>0){
+		// ix Slider
+		var slideComponentClass = ".pwsdWrap .sliderWrap";
+
+		// ix slider init > index number + "0"
+		var $slide = $('.pwsdWrap .sliderWrap').on('ixSlideMax:init', function(){
+			ixSlider_pagerCountControl();
+		}).ixSlideMax();
+		
+		// ixslider resize
+		$( window ).on( 'resize', function() {
+			$slide.ixSlideMax( 'resize' );
+
+		});
+
+		// pager 갯수 채크 : 1개 이하 일 때  prev, next, pager 숨김
+		function ixSlider_pagerCountControl(){
+			var countSlideItems =$(slideComponentClass + " .ix-btn").length;
+			if(countSlideItems <= 1){
+				$(slideComponentClass + " .ix-controller").hide();
+			} else {
+				$(slideComponentClass + " .ix-controller").show();
+			}
+		}
+		
+		// 180709 vertical middle add
+		function arrowC (){
+			var imgP = $('.pwsdSlider .ix-list-items').find('img').height(), btnP = $('.pwsdSlider .sliderBtnWrap').find('button').height();
+			$('.pwsdSlider .sliderBtnWrap').find('button').css({'top' : imgP/2, 'margin-top' : -btnP/2});
+		}
+		$(document).ready(arrowC);
+		$(window).resize(arrowC);
+		// / 180709 vertical middle add
+		
+	}
+
+})( jQuery );

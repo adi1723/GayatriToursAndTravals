@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gayatri Tours & Travels</title>
+  <style>
+    /* Beautiful Top Bar */
+    .top-bar {
+      background: linear-gradient(to right, #141e30, #243b55, #1a2a3a);
+      color: #ffffff;
+      padding: 6px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 15px;
+      height: 40px;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .top-bar .contact-info span {
+      margin-right: 15px;
+    }
+
+    .top-bar .client-name {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logout-btn {
+      background-color: #ff4d4d;
+      padding: 2px 8px;
+      border-radius: 4px;
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+
+    .logout-btn:hover {
+      background-color: #e60000;
+    }
+
+    .top-bar .social-icons a {
+      color: #ffffff;
+      font-size: 16px;
+      margin-left: 12px;
+      transition: color 0.3s;
+    }
+
+    .top-bar .social-icons a:hover {
+      color: #f0c330;
+    }
+
+    /* Beautiful Navbar */
+    .navbar {
+      background: linear-gradient(to right, #1e3c72, #2a5298, #1e3c72);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 20px;
+      height: 70px;
+      font-family: 'Segoe UI', sans-serif;
+      color: #ffffff;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo img {
+      height: 50px;
+      width: auto;
+      border-radius: 8px;
+    }
+
+    .logo-name h1 {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.2;
+    }
+
+    .logo-name span {
+      display: block;
+      font-size: 11px;
+      font-weight: 500;
+      color: #ffa500;
+      margin-top: 2px;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+    }
+
+    .nav-links li a {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 10px;
+      font-weight: 500;
+      padding: 6px 5px;
+      transition: background 0.3s ease;
+    }
+
+    .nav-links li a:hover {
+      color: #243b55;
+      background-color: #243b55;
+    }
+
+    /* Footer Styling */
+    .footer-modern {
+      background: linear-gradient(to right, #141e30, #243b55, #1a2a3a);
+      padding: 60px 40px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 50px;
+      color: #ffffff;
+      animation: fadeUp 1s ease-in-out forwards;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .footer-section {
+      flex: 1 1 300px;
+      min-width: 250px;
+    }
+
+    .footer-section h3 {
+      font-size: 22px;
+      margin-bottom: 15px;
+      color: #ffffff;
+      position: relative;
+    }
+
+    .footer-section h3::after {
+      content: '';
+      display: block;
+      width: 50px;
+      height: 3px;
+      background-color: #00bcd4;
+      margin-top: 8px;
+      border-radius: 2px;
+    }
+
+    .route-columns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .route-columns ul {
+      list-style: none;
+      padding: 0;
+      min-width: 160px;
+    }
+
+    .route-columns ul li {
+      margin-bottom: 10px;
+    }
+
+    .route-columns ul li a {
+      color: #dcdcdc;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .route-columns ul li a:hover {
+      color: #00bcd4;
+    }
+
+    .footer-section p,
+    .footer-section p a {
+      margin: 6px 0;
+      line-height: 1.6;
+      font-size: 15px;
+      color: #dcdcdc;
+      text-decoration: none;
+    }
+
+    .footer-section p a:hover {
+      color: #00bcd4;
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .footer-modern {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+      }
+
+      .route-columns {
+        justify-content: center;
+      }
+
+      .footer-section h3::after {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header class="top-bar">
+  <div class="contact-info">
+    <span>☎ +91 9421637393</span>
+    <span>☎ +91 9022951550</span>
+    <span>✉ shivamsevakendra007@gmail.com</span>
+  </div>
+
+  <div class="client-name">
+    {% if client_name %}
+      <span>Welcome, {{ client_name }}!</span>
+      <a href="/logout" class="logout-btn">Logout</a>
+    {% else %}
+      <span>Welcome, Guest!</span>
+    {% endif %}
+  </div>
+
+  <div class="social-icons">
+    <a href="#"><i class="fab fa-facebook-f"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+  </div>
+</header>
+
+<!-- Navigation -->
+<nav class="navbar">
+  <div class="logo-container">
+    <div class="logo">
+      <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Gayatri Tours & Travels">
+    </div>
+    <div class="logo-name">
+      <h1>Gayatri <span>Tours & Travels</span></h1>
+    </div>
+  </div>
+
+  <ul class="nav-links">
+    <li><a href="{{ url_for('client_home') }}">Home</a></li>
+    <li><a href="/client/about">About</a></li>
+    <li><a href="">Services</a></li>
+    <li><a href="">Packages</a></li>
+    <li><a href="/client/vehicles">Booking</a></li>
+    <li><a href="">Gallery</a></li>
+    <li><a href="">Blogs</a></li>
+    <li><a href="">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- Footer -->
+<footer class="footer-modern">
+  <div class="footer-section routes">
+    <h3>Popular Routes</h3>
+    <div class="route-columns">
+      <ul>
+        <li><a href="#">Pune to Mumbai</a></li>
+        <li><a href="#">Pune to Goa</a></li>
+        <li><a href="#">Mumbai to Delhi</a></li>
+        <li><a href="#">Delhi to Manali</a></li>
+        <li><a href="#">Hyderabad to Bangalore</a></li>
+      </ul>
+      <ul>
+        <li><a href="#">Chennai to Coimbatore</a></li>
+        <li><a href="#">Kolkata to Darjeeling</a></li>
+        <li><a href="#">Ahmedabad to Udaipur</a></li>
+        <li><a href="#">Jaipur to Jodhpur</a></li>
+        <li><a href="#">Nagpur to Pune</a></li>
+      </ul>
+      <ul>
+        <li><a href="#">Bangalore to Mysore</a></li>
+        <li><a href="#">Pune to Nashik</a></li>
+        <li><a href="#">Mumbai to Surat</a></li>
+        <li><a href="#">Delhi to Jaipur</a></li>
+        <li><a href="#">Chandigarh to Shimla</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-section contact">
+    <h3>Contact Us</h3>
+    <p><strong>Gayatri Tours & Travels</strong></p>
+    <p>Flat No 202 Swapnshilp Apartment, Abhinav College Road, Narhe, Pune 411041</p>
+    <p>Email: <a href="mailto:gayatritoursandtravels@gmail.com">gayatritoursandtravels@gmail.com</a></p>
+    <p>Phone: <a href="tel:+919022951550">+91 9022951550</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

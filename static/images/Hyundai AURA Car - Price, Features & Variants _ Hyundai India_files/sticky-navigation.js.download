@@ -1,0 +1,248 @@
+function DatalayerforSticky(evt,url){
+
+     //console.log(evt.target);
+    
+dataLayer.push({
+  'event': 'Sticky_Nav_'+evt.replaceAll(' ','')+'_click',
+  'pageName': window.location.origin + window.location.pathname,
+  'pageType': dataLayerPageType,
+  'banner_position': '',
+  'banner_title': '',
+  'buttonTitle': evt,
+  'linkName': url,
+    'sectionName': '',
+    'customerEmail': sessionStorage.getItem('mdEmail')?sessionStorage.getItem('mdEmail'):'',
+    'customerMobile': sessionStorage.getItem('mdMobile')?sessionStorage.getItem('mdMobile'):'',
+    'carCategory': '',
+    'carModel': $(".psnoNavigationTabWrap .tit").text(),
+    'carModelVariant': '',
+    'carColour': '',
+    'carFuelType': '',
+    'transmission_type': '',
+    'ex_showroom_price': '',
+    'customerState': '',
+    'customerCity':  '',
+    'customerPincode': '',
+    'dealerName': '',
+    'dealershipType': '',
+    'customerGender': '',
+    'formSubmissionType': '',
+    'videoName': '',
+    'search_term': '',
+    'ga_client_id': ga_client_id,
+    'serviceType': '',
+    'ServiceAppointmentDate': '',
+    'ServiceAppointmentTime': '',
+    'socialLinkName': '',
+    'scrollPercentage': '',
+    'SHAmob': sessionStorage.getItem('shMob')?sessionStorage.getItem('shMob'):'',
+    'SHAemail': sessionStorage.getItem('shEmail')? sessionStorage.getItem('shEmail'):''});
+}
+//Brochure Download
+
+    //Brochure Download
+    function brochureDown(){
+        var carname = $(".psnoNavigationTabWrap .tit").text();
+        var code = $(".psnoNavigationTabWrap .tit").attr('data-id');
+        
+        var pathArray = window.location.pathname.split('/');
+        var pagedepth = pathArray[5];
+        var carnameLower = carname.toLowerCase();
+
+        
+dataLayer.push({
+  'event': carnameLower.replaceAll(" ","-")+'_brochuredownload',
+  'pageName': window.location.origin + window.location.pathname,
+  'pageType': dataLayerPageType,
+  'banner_position': '',
+  'banner_title': '',
+  'buttonTitle': '',
+  'linkName': $(this).attr('href'),
+  'sectionName': '',
+  'customerEmail': sessionStorage.getItem('mdEmail')?sessionStorage.getItem('mdEmail'):'',
+  'customerMobile': sessionStorage.getItem('mdMobile')?sessionStorage.getItem('mdMobile'):'',
+  'carCategory': '',
+  'carModel': carname,
+  'carModelVariant': '',
+  'carColour': '',
+  'carFuelType': '',
+  'transmission_type': '',
+  'ex_showroom_price': '',
+  'customerState': '',
+  'customerCity':  '',
+  'customerPincode': '',
+  'dealerName': '',
+  'dealershipType': '',
+  'customerGender': '',
+  'formSubmissionType': 'Download Brochure',
+  'videoName': '',
+  'search_term': '',
+  'ga_client_id': ga_client_id,
+  'serviceType': '',
+  'ServiceAppointmentDate': '',
+  'ServiceAppointmentTime': '',
+  'socialLinkName': '',
+  'scrollPercentage': '',
+  'SHAmob': sessionStorage.getItem('shMob')?sessionStorage.getItem('shMob'):'',
+  'SHAemail': sessionStorage.getItem('shEmail')? sessionStorage.getItem('shEmail'):''});
+
+
+         gtag('event', 'download',
+	{
+		'allow_custom_scripts': true,
+		'u1': carname,
+		'send_to': 'DC-9077750/invmedia/submi0+standard',
+        'pageType': 'product page' ,
+		'buttonTitle': 'e-Brochure',
+		'carModel': carname
+
+	});
+    var selectedModel=carname.replaceAll(" ","-").split("new-");
+	var modelName=selectedModel[selectedModel.length-1];
+      window.VWO = window.VWO || [];
+      VWO.event = VWO.event || function () {VWO.push(["event"].concat([].slice.call(arguments)))};
+      VWO.event("download_e-brochure", {
+            "model_name": modelName.toLowerCase(),
+            "url_location": window.location.href
+      });      
+
+        /*gtag('event', 'conversion', {
+            'allow_custom_scripts': true,
+            'u1': carnameLower,
+            'u2': 'download_brochure',
+            'send_to': 'DC-9077750/invmedia/carfe0+standard'
+          });
+        */
+        _trackEvent(
+                $.extend(_dl,{
+                    brochure_vehicle_name : carname,
+                    brochure_model_code : code,
+                    page_event : {
+                        brochure_download : true, // brochure download
+                    }
+                })
+            );
+    }
+/*
+	[PSNO] Sticky navigation
+*/
+
+;(function ( $ ) {
+	var stickyNaviWrap;
+
+	$(document).ready(function(){
+
+		// Slider
+        var slideItemMax = 8;
+		var psnoSwiper = new Swiper('.psnoStickyNavigationWrap .swiper-container',{
+			slidesPerView: 'auto',
+			nextButton: '.swiper-button-next',
+			prevButton: '.swiper-button-prev',
+			wrapperClass: 'swiper-wrapper',
+			slidesPerColumn: 1,
+			slidesPerGroup:slideItemMax,
+            breakpoints: {
+                767: {
+                    slidesPerGroup : 1
+                },
+                1023: {
+                    slidesPerGroup : slideItemMax
+                }
+            },
+			onInit: function(swiper){
+        		$(window).resize();
+    		}
+		});
+
+		// Sticky
+		var stickyNaviPosY = 0;
+		stickyNaviWrap = $(".psnoStickyNavigationWrap");
+
+		var getContentMT = $(".gnbWrap").innerHeight();
+		stickyNaviPosY = stickyNaviWrap.offset().top;
+		var orgPsnoTop = stickyNaviWrap.parent().offset().top;
+
+		// if exist stickyNaviWrap
+		if (stickyNaviWrap.length > 0) {
+			//console.log("sticky1 :: "+ stickyNaviWrap.parent().offset().top);
+			$(window).scroll(function() {
+				var s = $(window).scrollTop();
+				var gab = 0;
+				getContentMT = $(".gnbWrap").innerHeight();
+				//console.log("sticky2 :: "+ stickyNaviWrap.parent().offset().top);
+				if(!$("body").hasClass("topBanner")){
+					if(orgPsnoTop != stickyNaviWrap.parent().offset().top){
+						$(window).resize();
+					}
+					stickyNaviPosY = orgPsnoTop - getContentMT;
+				} else {
+					stickyNaviPosY = orgPsnoTop;
+				}
+				
+				if (s >= stickyNaviPosY) {
+
+					gab = s - orgPsnoTop;
+					if(!$("body").hasClass("topBanner")){
+						if(gab > 0){
+							stickyNaviWrap.css("top",0);
+							if(getContentMT < gab) {
+								$(".gnbWrapFull").css("margin-top",-getContentMT);
+								stickyNaviWrap.css("margin-top",0);
+								if($(".gnbWrap .topBar .btnMobileMenu").hasClass("on")){
+									$(".gnbWrap .topBar .btnMobileMenu").trigger("click");
+								}
+							} else  {
+								$(".gnbWrapFull").css("margin-top",-gab);
+								stickyNaviWrap.css("margin-top",0);
+							}
+						} else {
+							stickyNaviWrap.css("top",0);
+							stickyNaviWrap.css("margin-top",0);
+							$(".gnbWrapFull").css("margin-top",0);
+						}
+					} else {
+						$(".gnbWrapFull").css("margin-top",0);
+						stickyNaviWrap.css("top",0);
+					}
+					stickyNaviWrap.addClass("fixed");
+				} else {
+					$(".gnbWrapFull").css("margin-top",0);
+					stickyNaviWrap.css("top",0);
+					stickyNaviWrap.css("margin-top",0);
+					stickyNaviWrap.removeClass("fixed");
+				}
+			});
+
+			$(window).on("resize",function(){
+				getContentMT = $(".gnbWrap").innerHeight();
+				orgPsnoTop = stickyNaviWrap.parent().offset().top;
+
+				if(!$("body").hasClass("topBanner")){
+					stickyNaviPosY = orgPsnoTop - getContentMT;
+				} else {
+					stickyNaviPosY = orgPsnoTop;
+				}
+			});
+
+			$(window).resize();
+		}
+
+
+		$('.psnoNavigationTab > div > ul > li').each(function(){
+            var prefix = $(this).children().attr("href");
+            if(prefix != undefined){
+                var url = location.href.substr(location.href.lastIndexOf("/"),location.href.end).replace('.html','');
+
+                var url2 = prefix.substr(prefix.lastIndexOf('/'),prefix.end);
+
+
+                if(url == url2){
+                    $(this).addClass("on");
+                }else{
+                    $(this).removeClass("on");
+                }
+            }
+        });
+	});
+
+})( jQuery );

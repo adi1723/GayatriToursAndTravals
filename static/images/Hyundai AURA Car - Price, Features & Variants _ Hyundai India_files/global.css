@@ -1,0 +1,369 @@
+@font-face{font-family:'HyundaiRegular';src:url(global/css/global/font/HyundaiSansHead-Regular.eot);src:url(global/css/global/font/HyundaiSansHead-Regular.eot?#iefix) format("embedded-opentype"),url(global/css/font/HyundaiSansHead-Regular.woff) format("woff"),url(global/css/font/HyundaiSansHead-Regular.woff2) format("woff2"),url(global/css/global/font/HyundaiSansHead-Regular.ttf) format("truetype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'HyundaiMedium';src:url(global/css/global/font/HyundaiSansHead-Medium.eot);src:url(global/css/global/font/HyundaiSansHead-Medium.eot?#iefix) format("embedded-opentype"),url(global/css/font/HyundaiSansHead-Medium.woff) format("woff"),url(global/css/font/HyundaiSansHead-Medium.woff) format("woff2"),url(global/css/global/font/HyundaiSansHead-Medium.ttf) format("truetype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'HyundaiLight';src:url(global/css/global/font/HyundaiSansHead-Light.eot);src:url(global/css/global/font/HyundaiSansHead-Light.eot?#iefix) format("embedded-opentype"),url(global/css/font/HyundaiSansHead-Light.woff) format("woff"),url(global/css/font/HyundaiSansHead-Light.woff2) format("woff2"),url(global/css/global/font/HyundaiSansHead-Light.ttf) format("truetype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'HyundaiBold';src:url(global/css/global/font/HyundaiSansHead-Bold.eot);src:url(global/css/global/font/HyundaiSansHead-Bold.eot?#iefix) format("embedded-opentype"),url(global/css/font/HyundaiSansHead-Bold.woff) format("woff"),url(global/css/font/HyundaiSansHead-Bold.woff2) format("woff2"),url(global/css/global/font/HyundaiSansHead-Bold.ttf) format("truetype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'numberVerdana';font-style:normal;font-weight:400;src:local(verdana);unicode-range:U+30-39}
+*{box-sizing:border-box!important}
+body{font-family:'HyundaiRegular';font-size:14px}
+.container{max-width:1150px}
+ul,li{margin:0;padding:0;list-style:none}
+a,a:hover,a:focus,a:active{text-decoration:none;color:#000}
+h1{font-size:30px;font-family:'HyundaiMedium';margin:0;letter-spacing:.5px}
+h2{font-size:30px;font-family:'HyundaiMedium';margin:0;letter-spacing:.5px}
+h3{font-size:20px;font-family:'HyundaiMedium';margin:0;letter-spacing:.5px}
+h4{font-size:30px;font-family:'HyundaiMedium';margin:0;letter-spacing:.5px}
+h5{font-size:30px;font-family:'HyundaiMedium';margin:0;letter-spacing:.5px}
+h6{font-size:30px;font-family:'HyundaiMedium';margin:0;letter-spacing:.5px}
+.cur-pointer{cursor:pointer}
+.no-padd{padding:0!important}
+.lh-2{line-height:1.8}
+.text-gt-primary{color:#002c5f;font-family:'HyundaiMedium'}
+.form-group label{font-family:'HyundaiMedium'}
+.label-title{margin-bottom:4px;line-height:2}
+.label-title label{margin-bottom:0;font-size:16px;font-family:'HyundaiMedium'}
+.form-control{padding:.375rem .75rem!important;border:1px solid #e4dcd3;color:#666;border-radius:0;height:40px!important;line-height:1!important}
+.form-control:focus{color:#666;background-color:#fff;border-color:#e4dcd3;box-shadow:none}
+.form-control::-webkit-input-placeholder{color:#999}
+.form-control::-moz-placeholder{color:#999}
+.form-control:-ms-input-placeholder{color:#999}
+.form-control::-ms-input-placeholder{color:#999}
+.form-control::placeholder{color:#999}
+.form-group{margin-bottom:4px}
+.form-control-row{height:40px}
+.form-control-row label{cursor:pointer}
+.file-select{display:block;border:1px solid #dce4ec;color:#34495e;cursor:pointer;height:40px;line-height:40px;text-align:left;background:#FFF;overflow:hidden;position:relative}
+.file-select .file-select-button{background:#dce4ec;padding:0 10px;display:inline-block;height:40px;line-height:40px}
+.file-select .file-select-name{line-height:40px;display:inline-block;padding:0 10px}
+.file-select input[type=file]{z-index:100;cursor:pointer;position:absolute;height:100%;width:100%;top:0;left:0;opacity:0;filter:alpha(opacity=0)}
+input[type='number']{-moz-appearance:textfield}
+input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+select.form-control::-ms-expand{display:none}
+select.form-control{-webkit-appearance:none;appearance:none;height:40px!important;line-height:inherit;background:url(../../../../../content/dam/hyundai/in/en/images/common/ico-select-right-arr.png) #fff no-repeat right center}
+.error,#stateError,#cityError{margin-top:.5rem;display:block;color:#da291c!important}
+textarea.form-control{height:auto!important;line-height:1.8!important}
+.radioboxWrap .radioBoxInner label{margin-bottom:0}
+.multiselect-native-select .btn-group{width:100%}
+.multiselect-native-select .multiselect{padding:.375rem .75rem!important;border:1px solid #e4dcd3;color:#666!important;border-radius:0;width:100%;text-align:left;display:block;height:auto!important;background:url(../../../../../content/dam/hyundai/in/en/images/common/ico-select-right-arr.png) #fff no-repeat right center}
+.multiselect-native-select .multiselect b{display:none}
+.multiselect-native-select .multiselect-container{width:100%;top:-1px!important;max-height:300px;overflow:auto;border:1px solid #e4dcd3}
+.multiselect-container> li> a{width:100%;display:block}
+.multiselect-container li.active a{color:#000}
+.multiselect-container>li>a label{width:100%;display:block;padding:7px 30px;font-family:'HyundaiRegular'}
+.or-hr{width:100%;height:2px;background:#eaeaea;margin:50px 0;position:relative}
+.or-hr span{background:#fff;color:#666;padding:0 15px;position:absolute;top:50%;left:50%;-moz-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);-o-transform:translate(-50%,-50%);-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%)}
+.section-row{padding:50px 0}
+.btn{border-radius:0;height:40px;font-size:16px;padding:0 20px}
+.btn-gt-primary{background:#002c5f!important;color:#fff}
+.btn-gt-secondary{background:#767676!important;color:#fff}
+.btn-gt-light-blue{background:#00aad2!important;color:#fff}
+.btn.focus,.btn:focus{box-shadow:none}
+.btn-gt-primary:hover,.btn-gt-primary:focus,.btn-gt-primary:active{background:#002c5f;color:#fff}
+.btn{border-radius:0;height:40px;font-size:16px;padding:0 20px}
+.btn-gt-primary{background:#002c5f;color:#fff}
+.btn-gt-secondary{background:#767676;color:#fff}
+.btn.focus,.btn:focus{box-shadow:none}
+.btn-fb{background:#5061a6!important;color:#fff!important}
+.btn-twitter{background:#06aced!important;color:#fff!important}
+.btn-linkedin{background:#007bb5!important;color:#fff!important}
+.btn-google{background:#d6492f!important;color:#fff!important}
+.btn-gt-primary:hover,.btn-gt-primary:focus,.btn-gt-primary:active{background:#002c5f;color:#fff}
+.btn-220{width:220px;width:220px}
+.pt-20{padding-top:20px}
+.book-online-details{margin-top:50px}
+.book-online-details h2{font-family:'HyundaiRegular';font-size:24px;margin-bottom:15px}
+.book-online-details h2 span{font-family:'HyundaiMedium';color:#002c5f}
+.book-online-details h3{margin-bottom:20px}
+.book-online-details ul{padding-left:15px;margin-bottom:20px}
+.book-online-details ul li{color:#666}
+.book-online-details p{margin-bottom:20px}
+.light-grey{background:#f1f3f6}
+.login-register-section{margin:0 auto}
+.login-form,.register-form,.forgot-password-form{margin:0 auto}
+.login-social-sign-up{margin-top:60px}
+.login-social-sign-up .btn{width:250px;margin-right:30px;padding:0;display:flex!important;align-items:center!important}
+.login-social-sign-up .btn:last-child{margin-right:0}
+.btn-block{display:block!important}
+.btn-social{position:relative;padding-left:50px!important;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.btn-social span{position:absolute;left:0;top:0;bottom:0;height:100%;width:40px;text-align:center;border-right:1px solid rgba(0,0,0,0.2);display:flex;align-items:center;justify-content:center}
+.resendOTP{font-size:13px!important;padding:8px 15px!important;height:auto!important}
+.table-bordered td,.table-bordered th{vertical-align:middle}
+.titWrap h2{margin-bottom:0}
+b,strong{font-weight:400;font-family:'HyundaiMedium'}
+.table{margin-bottom:0}
+p{margin-bottom:0}
+.sales-form,.service-form{display:none}
+.sales-enquiry,.service-enquiry{display:block}
+.user-left-col{width:27%;padding:0 15px}
+.user-right-col{width:73%;padding:0 15px}
+.user-info-card{position:relative}
+.user-info{overflow:hidden}
+.user-info p{margin-bottom:8px}
+.user-info h3{font-size:16px;margin-bottom:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.gnbWrap .gnbRight li.tabhid{display:block}
+.gnbWrap .gnbRight .item:first-child{margin-left:0}
+.psnoStickyNavigationWrap span.gt_cta,.psnoStickyNavigationWrap span.configurator,.psnoStickyNavigationWrap span.drive,.psnoStickyNavigationWrap span.quote{margin-right:0}
+.psnoStickyNavigationWrap .barInner a img{margin-right:20px}
+.dropdown-menu{border-radius:0}
+.btnUserMenu{float:left;width:20px;height:20px;display:block;text-indent:-9999px;overflow:hidden;-webkit-background-size:20px auto;background-size:20px auto;margin-left:15px}
+.gnbWrapFull .user-mob-dropdown .dropdown-menu{top:18px!important}
+.gnbWrapFull .user-mob-dropdown .dropdown-menu:after{content:'';position:absolute;top:-12px;right:0;width:16px;height:12px;background:url(https://org3-www.hyundai.com/etc/designs/hyundai/template_en/en/images/common/bg-snslayer-triangle.png) no-repeat 0 0;background-size:100% 100%}
+form .form-group.first{margin-top:-20px}
+.lightBoxGallery-box{margin-bottom:30px}
+.custom-steps .stepArea .stepType1 .stepList{width:25%}
+.tabWrap .tabArea .tab.col{padding:0}
+.stepArea .stepType1 .stepList.col{width:auto!important}
+.itemList.col{position:static}
+.homeBgMain .mianVisualWrap .mainVisualList .visual .contsInfo{top:auto;left:auto;right:auto;bottom:auto;width:438px}
+.homeBgMain .mianVisualWrap .mainVisualList .visual .contsInfo.top-left{top:96px;left:10%;right:auto;bottom:auto;width:438px}
+.homeBgMain .mianVisualWrap .mainVisualList .visual .contsInfo.top-center{top:96px;left:50%;right:auto;bottom:auto;width:438px;-moz-transform:translate(-50%,0%);-ms-transform:translate(-50%,0%);-o-transform:translate(-50%,0%);-webkit-transform:translate(-50%,0%);transform:translate(-50%,0%)}
+.homeBgMain .mianVisualWrap .mainVisualList .visual .contsInfo.top-right{top:96px;left:auto;right:10%;bottom:auto;width:438px}
+.homeBgMain .mianVisualWrap .mainVisualList .visual .contsInfo.verticle-left{top:50%;left:10%;right:auto;bottom:auto;width:438px;-moz-transform:translate(0%,-50%);-ms-transform:translate(0%,-50%);-o-transform:translate(0%,-50%);-webkit-transform:translate(0%,-50%);transform:translate(0%,-50%)}
+.homeBgMain .mianVisualWrap .mainVisualList .visual .contsInfo.verticle-center{top:50%;left:50%;right:auto;bottom:auto;width:438px;-moz-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);-o-transform:translate(-50%,-50%);-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%)}
+.homeBgMain .mianVisualWrap .mainVisualList .visual .contsInfo.verticle-right{top:50%;left:auto;right:10%;bottom:auto;width:438px;-moz-transform:translate(0%,-50%);-ms-transform:translate(0%,-50%);-o-transform:translate(0%,-50%);-webkit-transform:translate(0%,-50%);transform:translate(0%,-50%)}
+.homeBgMain .mianVisualWrap .mainVisualList .visual .contsInfo.bottom-left{top:auto;left:10%;right:auto;bottom:96px;width:438px}
+.homeBgMain .mianVisualWrap .mainVisualList .visual .contsInfo.bottom-center{top:auto;left:50%;right:auto;bottom:96px;width:438px;-moz-transform:translate(-50%,0%);-ms-transform:translate(-50%,0%);-o-transform:translate(-50%,0%);-webkit-transform:translate(-50%,0%);transform:translate(-50%,0%)}
+.homeBgMain .mianVisualWrap .mainVisualList .visual .contsInfo.bottom-right{top:auto;left:auto;right:10%;bottom:96px;width:438px}
+.homeBgMain .mianVisualWrap .mainVisualList .visual .contsInfo .btnWrap{margin-bottom:0}
+.homeBgMain .mianVisualWrap .mainVisualList .visual .contsInfo .btnWrap .colWd{display:block!important;margin:0 0 10px}
+.homeBgMain .mianVisualWrap .mainVisualList .visual .contsInfo .btnWrap .colWd:last-child{margin-bottom:0}
+.gnbWrap .gnbRight .item .snsSlayer:after{right:12px!important}
+.find-dealer-icon a{background-image:url(../../../../../content/dam/hyundai/in/en/images/common/ico_find_a_dealer_20x20.png)}
+.dropdown-menu{border-radius:0}
+.btnUserMenu{float:left;background:url(../../../../../content/dam/hyundai/in/en/images/common/ico-user-20-x-20@1x.png) no-repeat;width:20px;height:20px;display:block;text-indent:-9999px;overflow:hidden;-webkit-background-size:20px auto;background-size:20px auto;margin-left:0}
+.btnUserMenu.userLoggedIn{background:url(../../../../../content/dam/hyundai/in/en/images/common/ico-user-20-x-20@1x-blue.png) no-repeat}
+.gnbWrapFull .user-mob-dropdown .dropdown-menu{top:18px!important}
+.gnbWrapFull .user-mob-dropdown .dropdown-menu:after{content:'';position:absolute;top:-12px;right:0;width:16px;height:12px;background:url(../../../../../content/dam/hyundai/in/en/images/common/bg-snslayer-triangle.png) no-repeat 0 0;background-size:100% 100%}
+.dropdown-toggle:after{display:none}
+.btn-square-40{width:40px;height:40px}
+.btn-square-40 img{height:20px}
+.dropdown-menu{padding:0;border:1px solid #efefef}
+.dropdown-menu .dropdown-item{padding:10px 15px;font-size:14px}
+.dropdown-item:active{background:#002c5f;color:#fff}
+.secHomeModelWrap .btnMoreModel .colWd{display:inline-block;width:auto}
+.secHomeModelWrap .btnMoreModel .btn{width:auto;display:inline-block;line-height:50px;margin:0 10px}
+.custom-btn{width:auto!important}
+.image-slide-set-b .btnWrap .colWd{display:block}
+.image-slide-set-b .btnWrap .colWd a.btn,.image-slide-set-b .btnWrap .colWd button.btn{display:inline-block;width:auto;margin:0 10px;min-width:140px}
+a.btn,a.btn:hover,a.btn:focus,a.btn:active,button.btn,button.btn:hover,button.btn:focus,button.btn:active{color:#fff}
+.fiDealCon .fDnavL .fdNavListWrap .fdPd1{padding:10px}
+.fiDealCon .fDnavL .fdNavListWrap .fdNavList .fdNavView{box-shadow:0 0 10px 0 rgba(0,0,0,0.2);-moz-box-shadow:0 0 10px 0 rgba(0,0,0,0.2);-webkit-box-shadow:0 0 10px 0 rgba(0,0,0,0.2);margin-bottom:10px}
+.fiDealCon .fDnavL .fdNavListWrap .fdNavList .fdNavView .listTxt .listT1{margin:0;width:100%}
+.fiDealCon .fDnavL .fdNavListWrap .fdNavList .fdNavView .category-name{color:#00aad2;font-family:"HyundaiMedium"}
+.fiDealCon .fDnavL .fdNavListWrap .fdNavList .fdNavView p{line-height:1.6}
+.fiDealSch .formList{width:100%}
+.fiDealSch .formList .formArea .formBtn button.btn{height:40px;line-height:38px}
+.fiDealSch .formList .formArea .formBtn{float:none}
+.gmnoprint{display:none!important}
+.fdMapShow{height:auto}
+.fdMapShow .listTxt span.listNum{display:none}
+.fdMapShow .listTxt span.listT1{padding-left:0}
+.fdMapShow .fdg .fdTxt{margin-right:0}
+.fdMapShow{width:280px}
+.key-visual-normal .findACarBgPip .contsInfo .tooTipList{display:none!important}
+.tabWrap .tabArea .tab .link:hover,.tabWrap .tabArea .tab .link:focus{color:#fff;background-color:#444}
+.tabWrap .tabArea li[data-selected="true"] .link:hover, 
+.tabWrap .tabArea li[data-selected="false"] .link:hover{color: #444 !important;background-color: #fff !important;}
+.tabWrap .tabArea li[aria-selected="false"] .link{color:#444;background-color:#fff;font-size:13.5px;line-height:14px}
+.bgblack .tabWrap .tabArea li[data-selected="false"] .link{ color: #fff;}
+.tabWrap .tabArea li[aria-selected="true"] .link{color:#fff;background-color:#444}
+.tabWrap .tabArea li[data-selected="false"] .link{color:#fff;background-color:#444;font-size:13.5px;line-height:14px}
+.tabWrap .tabArea li[data-selected="true"] .link{color:#444;background-color:#fff}
+/* .ctna.bgColorBuff .tabArea.colLg8 li[data-selected="false"] .link{background: #e4dcd3} */
+.siteMapWrap ul.siteMapList li.dep1 .siteMapContWrap .siteMapCont .siteMapInfo:after{content:"";display:block;clear:both}
+.siteMapWrap ul.siteMapList li.dep1 .siteMapContWrap .siteMapCont .siteMapInfo dl dd{margin-top:4px}
+.siteMapWrap ul.siteMapList li.dep1 .siteMapContWrap .siteMapCont dl.ddMt dd{margin-top:4px}
+.siteMapWrap ul.siteMapList li.dep1 .siteMapContWrap .siteMapCont dl{float:left;max-width:224px;width:20%;margin-bottom:23px}
+.siteMapWrap ul.siteMapList li.dep1 .siteMapContWrap .siteMapCont dl:nth-child(5n+1){clear:both}
+.siteMapWrap ul.siteMapList li.dep1 .siteMapContWrap .siteMapCont dl dt{font-size:16px;line-height:28px;font-weight:500;color:#000;font-family:"HyundaiMedium";text-align:left}
+.siteMapWrap ul.siteMapList li.dep1 .siteMapContWrap .siteMapCont dl dt a{display:block;font-size:16px;line-height:28px;color:#000;font-family:"HyundaiMedium";text-decoration:underline}
+.siteMapWrap ul.siteMapList li.dep1 .siteMapContWrap .siteMapCont dl dd{margin-top:23px;font-size:16px;line-height:28px;color:#000;font-family:"HyundaiRegular";padding-right:10px}
+.siteMapWrap ul.siteMapList li.dep1 .siteMapContWrap .siteMapCont dl dd a{display:block;font-size:16px;line-height:28px;color:#000;font-family:"HyundaiRegular";text-decoration:underline}
+.sectionInner{text-align:left}
+.pro-thumb-box ul li a{display:inline-block!important}
+.sliderWrap.ckvoWrap .sliderList .visual .contsInfo{left:0;right:0;margin:0 auto}
+.cfoo .boxArea .txtBoxM{min-height:320px}
+.btn.btn-gt-primary{display:inline-block;width:auto}
+.btn.btn-gt-secondary{display:inline-block;width:auto}
+.btn.btn-block{width:100%!important}
+.services-cards{padding:0!important}
+.services-cards a{padding:20px;text-align:center;display:flex;align-items:center;justify-content:center}
+.services-cards a img{height:80px}
+.services-cards a h3{text-transform:capitalize;font-size:18px;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;margin-top:20px}
+.service-cards-thumb{padding:0}
+.service-cards-thumb a{display:flex;align-items:center;min-height:150px;padding:0 10px 0 0;color:#fff}
+.service-cards-thumb .jr-card-thumb{display:flex;align-items:center;justify-content:center;width:150px;height:150px;background:#fff;-webkit-transition:all .2s ease-in-out;-moz-transition:all .2s ease-in-out;-o-transition:all .2s ease-in-out;-ms-transition:all .2s ease-in-out}
+.service-cards-thumb .jr-card-thumb img{height:80px;-webkit-transition:all .2s ease-in-out;-moz-transition:all .2s ease-in-out;-o-transition:all .2s ease-in-out;-ms-transition:all .2s ease-in-out}
+.jr-card-body{margin-left:10px}
+.service-cards-thumb .jr-card-body h4{font-size:18px;text-transform:capitalize}
+.table td,.table th{padding:1rem}
+#exploreNavigation #left,#exploreNavigation #right{display:none}
+.checkboxWrap + .checkboxWrap{padding-top:31px}
+.page-link:focus{box-shadow:none!important}
+div.dataTables_wrapper div.dataTables_paginate ul.pagination{display:flex;justify-content:center}
+.pagination{margin-top:30px!important}
+.pagination li{margin:0 9px}
+.pagination li a{background-color:transparent!important;border-color:transparent!important;padding:0;color:#212529}
+.pagination li.active a{color:#00aad2!important}
+.pagination li.active a:hover,.pagination li a:hover{background-color:transparent!important;border-color:transparent!important}
+.pagination li:first-child a{width:11px;height:19px;color:transparent;font-size:0}
+.pagination li:first-child a:after{content:"";display:block;width:8px;height:14px;background:url(../../../../../content/dam/hyundai/in/en/images/common/btn-prev2.png) no-repeat;background-size:contain}
+.pagination li:last-child a{width:11px;height:19px;color:transparent;font-size:0}
+.pagination li:last-child a:after{content:"";display:block;width:8px;height:14px;background:url(../../../../../content/dam/hyundai/in/en/images/common/btn-next2.png) no-repeat;background-size:contain}
+.service-checkboxWrap{display:block;font-size:0;line-height:0;width:20%;padding:0 15px}
+.service-checkboxWrap .checkboxInner{display:inline-block;vertical-align:top;position:relative;overflow:hidden;width:100%}
+.service-checkboxWrap .checkboxInner ~ .checkboxInner{margin-left:7px}
+.service-checkboxWrap .checkboxInner input[type=checkbox]{position:absolute;left:-30px;top:-30px}
+.service-checkboxWrap .checkboxInner label{display:flex;justify-content:center;align-items:center;line-height:18px;font-size:14px;vertical-align:top;cursor:pointer;padding:15px;position:relative;text-align:center;margin-bottom:30px;width:100%;min-height:110px}
+.service-checkboxWrap .checkboxInner label span{position:relative}
+.service-checkboxWrap .checkboxInner input[type=checkbox]:checked ~ label span{color:#fff}
+.service-checkboxWrap .checkboxInner input[type=checkbox] ~ label:before{content:"";display:inline-block;width:100%;height:100%;border:2px solid #eee;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;position:absolute;left:0;top:0}
+.service-checkboxWrap .checkboxInner input[type=checkbox]:checked ~ label:before{border:2px solid #00aad2;background:#00aad2}
+.service-checkboxWrap .checkboxInner input[type=checkbox]:disabled ~ label:before,.service-checkboxWrap .checkboxInner input[type=checkbox].disabled ~ label:before{border:2px solid #e5e5e5;background:#f2f2f2}
+.service-checkboxWrap .checkboxInner input[type=checkbox] ~ label:after{content:"";display:inline-block;width:18px;height:18px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;position:absolute;left:0;top:0}
+.service-checkboxWrap .checkboxInner input[type=checkbox]:checked ~ label:after{background:url(../../../../../content/dam/hyundai/in/en/images/common/ico-checkbox.png) #002c5f no-repeat center center;background-size:14px}
+.text-gt-primary{color:#002c5f}
+.sorting_disabled:after{display:none!important}
+.compareLayer .stepCar .listTypeWrap .btnTypeThumb::after,.compareLayer .stepCar .listTypeWrap .btnTypeThumb::before,.compareLayer .stepCar .listTypeWrap .btnTypeThumb span::before,.compareLayer .stepCar .listTypeWrap .btnTypeThumb span::after{width:9px!important;height:9px!important}
+.psnoStickyNavigationWrap .topLinkBar .barInner .col a:hover span{text-decoration:underline}
+dl,ol,ul{margin-bottom:0}
+.breadcrumb{padding:0;margin-bottom:0}
+.datepicker-dropdown.datepicker-orient-bottom::before{display:none}
+.cfoo .boxArea .txtBoxM .txtBox1 .subTitMg2{height:auto!important}
+.prices-btn-section .btn{width:100%;display:block;line-height:50px}
+.warranty-dates{display:flex;flex-wrap:wrap;margin:0 -10px}
+.warranty-dates .dates{padding:15px 10px;color:#002c5f;width:50%}
+.warranty-dates .dates:last-child{display:flex;justify-content:end}
+.warranty-dates .dates span{font-weight:700}
+.require{padding-left:4px;font-size:16px;font-family:"HyundaiMedium"}
+.otp-message{font-size:14px;font-family:"HyundaiBold"}
+.sent-message{color:#000}
+.service-history-table{margin-top:20px}
+.no-vehicle-found .no-vehicle-msg{margin:30px 0}
+.no-vehicle-msg .thumb{margin-bottom:20px}
+.no-vehicle-msg h4{font-size:20px;font-family:'HyundaiMedium'}
+.booking-details-card{min-height:280px;margin-bottom:30px}
+.booking-details-card .card-body{padding:15px}
+.booking-details-card h3{border-bottom:1px solid #dfdfdf;margin-bottom:15px}
+.booking-details-card h4{margin-bottom:15px;line-height:1;font-size:20px}
+.booking-details-card p{margin-bottom:15px;line-height:1.6}
+.booking-details-card label{line-height:1.6!important}
+.booking-details-card .checkboxWrap .checkboxInner input[type="checkbox"] ~ label::before{top:3px}
+.booking-details-card .btn{position:absolute;bottom:0;left:0;right:0;display:flex;justify-content:center;align-items:center;border-top:1px solid #dfdfdf;background:#E4DCD3;color:#000;font-weight:700}
+.booking-details-card .btn-checkout{background:#002c5f;color:#fff}
+.booking-details-card .btn:hover,.booking-details-card .btn:focus,.booking-details-card .btn:active{background:#002c5f;color:#fff;border-top:1px solid #002c5f}
+.stepArea .stepList.compStep .inner{color:#002c5f!important}
+.stepArea .stepList.compStep .inner .num{background:#002c5f!important}
+.confOptionWrap .optionBoxWrap .box.box2 .boxInner{margin-left:0;margin-right:20px}
+.confOptionWrap{min-height:420px}
+.confOptionWrap .optionBoxWrap .box{height:470px}
+.car-thumb img{max-width:100%}
+.dataTables_wrapper .col-sm-12{padding:0!important}
+.table-bordered thead td,.table-bordered thead th{border-bottom:0;border-top:0;background:#002c5e;color:#fff;font-weight:400}
+.download-review{font-weight:700;color:#002c5e}
+.compareLayer .carOpt .togList li.dep1 .aswer .dep2{margin-top:15px}
+.compareLayer .carOpt .togList li.dep1 .aswer .dep2 .radioboxWrap .radioBoxInner{display:block}
+.compareLayer .carOpt .togList li.dep1 .aswer .dep2 .radioboxWrap .radioBoxInner label{display:block}
+.compareLayer .carOpt .togList li.dep1 .aswer .dep2 .radioboxWrap .radioBoxInner ~ .radioBoxInner{margin-left:0;margin-top:20px}
+.register-password{position:relative}
+.register-password .form-control{padding-right:40px!important}
+.register-password .show-password-icon{position:absolute;right:8px;top:50%;margin-top:-10px;cursor:pointer}
+.width-100{width:100%}
+@media (min-width:0px) and (max-width:1023px) {
+.fiDealCon .fDnavL .fdNavListWrap .fdNavList .fdNavView p{margin-bottom:10px}
+.form-group{margin-bottom:28px}
+.secHomeModelWrap .btnMoreModel .btn{line-height:40px}
+.secHomeModelWrap .modelListWrap .list{width:25%}
+.secHomeModelWrap .modelListWrap .thumbArea img{width:169px;height:92px}
+.gnbWrap .gnbArea .dep1Wrap .dep1{margin:0 16px}
+.gnbWrap .gnbRight li.tabhid{display:block}
+.psnoStickyNavigationWrap .barInner a img{width:26px;height:26px;display:block;margin:auto}
+.psnoStickyNavigationWrap span.gt_cta,.psnoStickyNavigationWrap span.configurator,.psnoStickyNavigationWrap span.drive,.psnoStickyNavigationWrap span.quote{margin-bottom:0;margin-top:4px}
+.siteMapWrap ul.siteMapList li.dep1 .siteMapContWrap .siteMapCont dl{width:33.3%}
+.section-row .pro-thumb-box ul li{width:50%}
+.section-row .pro-thumb-box ul li h4{font-size:12px;line-height:1.71}
+.cfoo .boxArea .txtBoxM{min-height:240px}
+.nav-tabs .nav-link{padding:10px 5px!important;font-size:12px;min-height:115px}
+.nav-tabs .nav-link img{height:40px!important}
+.nav-tabs .nav-link span{font-family:'HyundaiRegular'}
+.service-checkboxWrap{width:25%}
+}
+@media (min-width:768px) and (max-width:1024px) {
+    .gnbWrap .topBar .logo .topLogo{ margin-left:10px;}
+    .gnbWrap .gnbArea {padding-left: 5px;}
+    .gnbWrap .gnbArea .dep1Wrap .dep1 {margin: 0 5px;}
+    .gnbWrap .gnbArea .dep1Wrap .dep1 [class^="dep1_a"], .gnbWrap .gnbArea .dep1Wrap .dep1 [class^="dep1-a"]{ font-size: 13px;}
+}
+@media (min-width:0px) and (max-width:767px) {
+.table-accordion .accordion-head a{padding:15px!important}
+.table-accordion .accordion-head a h3{font-size:12px}
+.container{width:100%;max-width:100%}
+.gnbWrap .gnbArea .dep1Wrap .dep1{margin:0}
+.gnbWrapFull .user-mob-dropdown .dropdown-menu{top:18px!important}
+.gnbWrapFull .user-mob-dropdown .dropdown-menu:after{content:'';position:absolute;top:-12px;right:0;width:16px;height:12px;background:url(https://org3-www.hyundai.com/etc/designs/hyundai/template_en/en/images/common/bg-snslayer-triangle.png) no-repeat 0 0;background-size:100% 100%}
+.mianVisualWrap .mainVisualList .visual .contsInfo{position:absolute;top:58px!important;left:30px!important;right:30px!important;bottom:0!important;width:auto!important;-moz-transform:inherit!important;-ms-transform:inherit!important;-o-transform:inherit!important;-webkit-transform:inherit!important;transform:inherit!important}
+.mianVisualWrap .mainVisualList .visual .contsInfo .btnWrap{position:absolute;bottom:10px;right:-10px;left:-10px;margin-bottom:0;text-align:center;width:auto;min-width:auto;display:flex;flex-direction:row}
+.mianVisualWrap .mainVisualList .visual .contsInfo .btnWrap .colWd{width:110px;min-width:auto;margin:0 6px!important}
+.ckvm .sliderWrap .btn{width:100%}
+.secHomeModelWrap .modelListWrap .list{width:100%!important}
+.secHomeModelWrap .modelListWrap .thumbArea img{width:100%!important;height:auto!important}
+.secHomeModelWrap .btnMoreModel .btn{line-height:40px}
+.login-social-sign-up .btn{width:100%;margin-bottom:15px;margin-right:0}
+.label-title label{font-size:14px}
+#exploreNavigation{padding:0 40px}
+#exploreNavigation li:last-child{margin-right:40px}
+#exploreNavigation #left,#exploreNavigation #right{display:block}
+#exploreNavigation #left{position:absolute;left:0;top:0;width:40px;height:50px;background:url(../../../../../content/dam/hyundai/in/en/images/common/ico-prev-arr-s.png) no-repeat center #fff}
+#exploreNavigation #right{position:absolute;right:0;top:0;width:40px;height:50px;background:url(../../../../../content/dam/hyundai/in/en/images/common/ico-next-arr-s.png) no-repeat center #fff}
+.nav-menu{overflow:auto;white-space:nowrap}
+.sidebar{margin-right:0!important;overflow:auto!important}
+.sidebar li{display:inline-block;width:auto!important}
+.sidebar li a{padding:12px 16px}
+.user-left-col{width:100%}
+.user-right-col{width:100%;margin-left:0}
+.nav-menu{margin-bottom:0!important}
+.nav-menu li.nav-heading{display:none}
+.sidebar .nav-menu li a{padding:18px 16px}
+.user-info-card{margin-bottom:0!important}
+.sidebar li a{font-family:'HyundaiMedium'}
+.sidebar li a:hover,.sidebar li.active a{background:#fff!important;color:#00aad2!important}
+.aside{border-top:1px solid #efefef}
+.services-cards a{padding:15px 12px!important;min-height:160px}
+.services-cards a h3{font-size:14px!important;white-space:unset!important}
+.fiDealSch .formList .formArea .formCon input,.fiDealSch .formList .formArea{height:auto}
+.fiDealSch .formList{margin:0}
+.fiDealSch .formList .formArea .formBtn{position:static;width:auto;height:auto}
+.fiDealSch .formList .formArea .formBtn button.btn{text-indent:inherit;background:#002c5f}
+.findDealerWrap .fdMapWrap{width:100%;height:300px;display:block;position:static}
+.siteMapWrap ul.siteMapList li.dep1 .siteMapContWrap .siteMapCont dl{width:50%;max-width:100%}
+.cfoo .boxArea .txtBoxM{min-height:auto}
+.warranty-dates .dates{text-align:center}
+.warranty-dates .dates span{display:block}
+.warranty-dates .dates:last-child{display:initial}
+.service-checkboxWrap{width:50%}
+}
+@media (min-width:0px) and (max-width:526px) {
+.secHomeModelWrap .btnMoreModel{height:auto}
+.secHomeModelWrap .btnMoreModel .colWd{display:block;margin-top:10px}
+.secHomeModelWrap .btnMoreModel .colWd:first-child{margin-top:0}
+.secHomeModelWrap .btnMoreModel .colWd a{width:200px}
+.section-row .pro-thumb-box ul li{width:100%}
+.section-row .pro-thumb-box ul li h4{font-size:12px;line-height:1.71}
+.service-checkboxWrap .checkboxInner label{min-height:130px}
+}
+.newDiv .file-select{margin-top:5px}
+.add-more-files{font-size:12px;margin-top:5px;line-height:1;padding:10px 15px;height:auto}
+.contentWrap{min-height:85vh}
+.btn{border-radius:0;height:40px;font-size:16px;padding:0 20px}
+.btn-gt-primary{background:#002c5f;color:#fff}
+.btn-gt-secondary{background:#767676;color:#fff}
+.btn.focus,.btn:focus{box-shadow:none}
+.btn-fb{background:#5061a6;color:#fff}
+.btn-twitter{background:#06aced;color:#fff}
+.btn-linkedin{background:#007bb5;color:#fff}
+.btn-google{background:#d6492f;color:#fff}
+.btn-gt-primary:hover,.btn-gt-primary:focus,.btn-gt-primary:active{background:#002c5f;color:#fff}
+.btn-220{width:220px}
+.loader-overlay{display:none;position:fixed;top:0;left:0;bottom:0;right:0;background:rgba(0,0,0,0.1);z-index:99}
+.loader-overlay .spinner-border{width:100px;height:100px;animation:spinner-border 1.5s linear infinite}
+.loader-overlay-container{height:100%}
+.loader-logo{width:60px;position:absolute;top:50%;left:50%;-moz-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);-o-transform:translate(-50%,-50%);-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%)}

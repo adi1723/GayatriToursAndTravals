@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Gayatri Tours & Travels</title>
+    <style>
+        body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+        * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+        /* Beautiful Top Bar */
+.top-bar {
+  background: linear-gradient(to right, #141e30, #243b55, #1a2a3a);
+  color: #ffffff;
+  padding: 6px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 15px;
+  height: 40px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.top-bar .contact-info span {
+  margin-right: 15px;
+}
+
+.top-bar .client-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logout-btn {
+  background-color: #ff4d4d;
+  padding: 2px 8px;
+  border-radius: 4px;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+
+.logout-btn:hover {
+  background-color: #e60000;
+}
+
+.top-bar .social-icons a {
+  color: #ffffff;
+  font-size: 16px;
+  margin-left: 12px;
+  transition: color 0.3s;
+}
+
+.top-bar .social-icons a:hover {
+  color: #f0c330;
+}
+
+/* Beautiful Navbar */
+/* Navbar Styling */
+.navbar {
+  background: linear-gradient(to right, #1e3c72, #2a5298, #1e3c72);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 20px;
+  height: 70px;
+  font-family: 'Segoe UI', sans-serif;
+  color: #ffffff;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo container and alignment */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo img {
+  height: 50px;
+  width: auto;
+  border-radius: 8px;
+}
+
+/* Company name styling */
+.logo-name h1 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.logo-name span {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  color: #ffa500; /* Accent color for 'Tours & Travels' */
+  margin-top: 2px;
+}
+
+/* Nav Links */
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+
+.nav-links li a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 25px;
+  font-weight: 500;
+  padding: 6px 20px;
+  transition: background 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #243b55;
+  background-color: #549cef;
+}
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f4f6f9;
+  color: #333;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 40px;
+  color: #003366;
+  font-size: 42px;
+  animation: fadeInDown 1s ease-out;
+}
+
+.content {
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+h2 {
+  color: #004080;
+  margin-top: 30px;
+  font-size: 26px;
+  border-left: 5px solid #004080;
+  padding-left: 10px;
+  animation: fadeInLeft 1s ease-in;
+}
+
+h3 {
+  color: #0059b3;
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.6;
+  animation: fadeIn 1.2s ease;
+}
+
+/* Services and Values Boxes */
+.services, .values {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.services > div, .values > div {
+  flex: 1 1 30%;
+  background: #e6f0ff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  animation: fadeInUp 1s ease;
+}
+
+.services > div:hover, .values > div:hover {
+  transform: translateY(-5px);
+  background-color: #d9e9ff;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+  0% { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInLeft {
+  0% { opacity: 0; transform: translateX(-20px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .services > div, .values > div {
+    flex: 1 1 100%;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  h2 {
+    font-size: 22px;
+  }
+}
+.reviews {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.review-card {
+  flex: 1 1 30%;
+  background: #fff4e6;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  animation: fadeInUp 1s ease;
+  transition: transform 0.3s ease;
+}
+
+.review-card:hover {
+  transform: translateY(-5px);
+  background: #ffeacc;
+}
+
+.review-text {
+  font-style: italic;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.review-author {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.stars {
+  color: #f1c40f;
+  font-size: 18px;
+}
+
+/* Responsive for reviews */
+@media (max-width: 768px) {
+  .review-card {
+    flex: 1 1 100%;
+  }
+}
+
+        /* Footer */
+.footer-modern {
+  background: linear-gradient(to right, #141e30, #243b55, #1a2a3a);
+  padding: 60px 40px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 50px;
+  color: #ffffff;
+  animation: fadeUp 1s ease-in-out forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.footer-section {
+  flex: 1 1 300px;
+  min-width: 250px;
+}
+
+.footer-section h3 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: #ffffff;
+  position: relative;
+}
+
+.footer-section h3::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 3px;
+  background-color: #00bcd4;
+  margin-top: 8px;
+  border-radius: 2px;
+}
+
+.route-columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.route-columns ul {
+  list-style: none;
+  padding: 0;
+  min-width: 160px;
+}
+
+.route-columns ul li {
+  margin-bottom: 10px;
+}
+
+.route-columns ul li a {
+  color: #dcdcdc;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.route-columns ul li a:hover {
+  color: #00bcd4;
+}
+
+.footer-section p,
+.footer-section p a {
+  margin: 6px 0;
+  line-height: 1.6;
+  font-size: 15px;
+  color: #dcdcdc;
+  text-decoration: none;
+}
+
+.footer-section p a:hover {
+  color: #00bcd4;
+}
+
+
+
+/* Animation */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-modern {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .route-columns {
+    justify-content: center;
+  }
+
+  .footer-section h3::after {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+    </style>
+</head>
+<body>
+
+ <!-- Header -->
+  <header class="top-bar">
+    <div class="contact-info">
+      <span>☎ +91 9421637393</span>
+      <span>☎ +91 9022951550</span>
+      <span>✉ shivamsevakendra007@gmail.com</span>
+    </div>
+
+    <div class="client-name">
+      {% if client_name %}
+        <span>Welcome, {{ client_name }}!</span>
+        <a href="/logout" class="logout-btn">Logout</a>
+      {% else %}
+        <span>Welcome, Guest!</span>
+      {% endif %}
+    </div>
+
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="logo-container">
+      <div class="logo">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Gayatri Tours and Travels Company Logo">
+      </div>
+      <div class="logo-name">
+        <h1>Gayatri <span>Tours & Travels</span></h1>
+      </div>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="{{ url_for('client_home') }}">Home</a></li>
+      <li><a href="{{ url_for('client_about') }}">About</a></li>
+      <li><a href="{{ url_for('calculate') }}">Services</a></li>
+      <li><a href="{{ url_for('client_packages') }}">Packages</a></li>
+      <li><a href="/client/vehicles">Booking</a></li>
+      <li><a href="#">Gallery</a></li>
+      <li><a href="#">Blogs</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+        <h1>About Us</h1>
+
+    <div class="content">
+        <h2>Who We Are</h2>
+        <p>Welcome to <strong>Gayatri Tours & Travels</strong>! With years of experience in the travel industry, we are a trusted travel partner dedicated to providing our customers with memorable travel experiences. Whether you're looking for a weekend getaway or an international adventure, we offer the best services tailored to your needs. Our goal is simple: <strong>Your comfort is our priority</strong>.</p>
+
+        <h2>Our Vision</h2>
+        <p>We aim to become the most preferred travel agency, known for our customer-first approach, offering affordable, safe, and enjoyable travel experiences. Our vision is to make travel accessible to all, ensuring every journey is comfortable, well-guided, and unforgettable.</p>
+
+        <h2>What We Do</h2>
+        <p>At <strong>Gayatri Tours & Travels</strong>, we provide a variety of services, including:</p>
+        <div class="services">
+            <div>
+                <h3>Customizable Itineraries</h3>
+                <p>We create personalized itineraries based on your preferences, ensuring that your journey is exactly what you envisioned.</p>
+            </div>
+            <div>
+                <h3>Affordable Travel Packages</h3>
+                <p>Choose from a wide range of budget-friendly packages designed to suit all kinds of travelers.</p>
+            </div>
+            <div>
+                <h3>Expert Guidance</h3>
+                <p>Our experienced travel guides are here to assist you at every step, ensuring a smooth and informative trip.</p>
+            </div>
+        </div>
+
+        <h2>Why Choose Us?</h2>
+        <p>Here are just a few reasons to travel with us:</p>
+        <div class="values">
+            <div>
+                <h3>24/7 Support</h3>
+                <p>Always ready to assist you with your travel queries or concerns.</p>
+            </div>
+            <div>
+                <h3>100% Safety</h3>
+                <p>Your safety is our top priority, and we ensure secure and reliable services.</p>
+            </div>
+            <div>
+                <h3>GPS Tracking</h3>
+                <p>Keep track of your journey in real time for added peace of mind.</p>
+            </div>
+        </div>
+
+        <h2>Our Values</h2>
+        <p><strong>Integrity:</strong> We operate with honesty and transparency, ensuring you always know what to expect.</p>
+        <p><strong>Customer-Centric:</strong> We put our customers at the center of everything we do, striving to exceed their expectations.</p>
+        <p><strong>Sustainability:</strong> We support eco-friendly practices to help preserve the beauty of the destinations we visit.</p>
+
+        <h2>Our Team</h2>
+        <p>The dedicated team at <strong>Gayatri Tours & Travels</strong> is committed to ensuring every traveler has a safe, smooth, and memorable journey. With years of industry experience, we understand the importance of reliable service and personalized care.</p>
+
+         <h2>Customer Reviews</h2>
+<div class="reviews">
+    <div class="review-card">
+        <p class="review-text">"I had a wonderful trip planned by Gayatri Tours & Travels. Everything was smooth and well-organized!"</p>
+        <p class="review-author">– Priya Sharma</p>
+        <div class="stars">★★★★★</div>
+    </div>
+    <div class="review-card">
+        <p class="review-text">"Best travel experience ever! The team was supportive and helpful throughout."</p>
+        <p class="review-author">– Rahul Mehta</p>
+        <div class="stars">★★★★☆</div>
+    </div>
+    <div class="review-card">
+        <p class="review-text">"Good service, affordable pricing. Would definitely book again!"</p>
+        <p class="review-author">– Sneha Desai</p>
+        <div class="stars">★★★★★</div>
+    </div>
+</div>
+
+    </div>
+   
+ <!-- Footer -->
+ <footer class="footer-modern">
+  <div class="footer-section routes">
+    <h3>Popular Routes</h3>
+    <div class="route-columns">
+      <ul>
+        <li><a href="#">Pune to Mumbai</a></li>
+        <li><a href="#">Pune to Goa</a></li>
+        <li><a href="#">Mumbai to Delhi</a></li>
+        <li><a href="#">Delhi to Manali</a></li>
+        <li><a href="#">Hyderabad to Bangalore</a></li>
+      </ul>
+      <ul>
+        <li><a href="#">Chennai to Coimbatore</a></li>
+        <li><a href="#">Kolkata to Darjeeling</a></li>
+        <li><a href="#">Ahmedabad to Udaipur</a></li>
+        <li><a href="#">Jaipur to Jodhpur</a></li>
+        <li><a href="#">Nagpur to Pune</a></li>
+      </ul>
+      <ul>
+        <li><a href="#">Bangalore to Mysore</a></li>
+        <li><a href="#">Pune to Nashik</a></li>
+        <li><a href="#">Mumbai to Surat</a></li>
+        <li><a href="#">Delhi to Jaipur</a></li>
+        <li><a href="#">Chandigarh to Shimla</a></li>
+      </ul>
+      
+
+    </div>
+  </div>
+
+  <div class="footer-section contact">
+    <h3>Contact Us</h3>
+    <p><strong>Gayatri Tours & Travels</strong></p>
+    <p>Flat No 202 Swapnshilp Apartmnet <br>Abhinav College Road Narhe Pune 411041</p>
+    <p>Email: <a href="mailto:gayatritoursandtravels@gmail.com">gayatritoursandtravels@gmail.com</a></p>
+    <p>Phone: <a href="tel:+919022951550">+91 9022951550</a></p>
+  </div>
+
+</footer>
+</body>
+</html>

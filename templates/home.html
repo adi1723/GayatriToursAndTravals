@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Travel Booking Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body class="client-main">
+
+    <header>
+        <div class="top-bar">
+            <span><i class="fas fa-phone"></i> +91-9876543210</span>
+            <span><i class="fas fa-envelope"></i> support@travelsite.com</span>
+            <span class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </span>
+        </div>
+
+        <nav class="navbar">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Booking</a></li>
+                <li><a href="#">Packages</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">FAQ</a></li>
+                <li class="dropdown">
+                    <a href="#">Login</a>
+                    <div class="dropdown-content">
+                        <a href="{{ url_for('client_login') }}">Client Login</a>
+                        <a href="{{ url_for('admin_login') }}">Admin Login</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="banner" data-aos="fade-up">
+        <h1>Welcome to Explore India Travels</h1>
+        <p>Your comfort is our priority.</p>
+        <img src="{{ url_for('static', filename='images/banner.jpg') }}" alt="Travel Image">
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <h3>Popular Routes</h3>
+            <ul>
+                <li><a href="#">Pune to Mumbai</a></li>
+                <li><a href="#">Pune to Goa</a></li>
+                <li><a href="#">Mumbai to Delhi</a></li>
+                <li><a href="#">Delhi to Manali</a></li>
+            </ul>
+        </div>
+        <div class="footer-contact">
+            <h3>Contact Us</h3>
+            <p>Explore India Travels</p>
+            <p>Address: Shivaji Nagar, Pune - 411005</p>
+            <p>Email: support@travelsite.com</p>
+            <p>Phone: +91-9876543210</p>
+        </div>
+    </footer>
+
+    <script>
+        AOS.init();
+    </script>
+
+</body>
+</html>

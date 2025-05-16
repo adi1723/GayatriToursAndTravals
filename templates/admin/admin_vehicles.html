@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Vehicle Inventory</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+        }
+        .admin-container {
+            display: flex;
+            min-height: 100vh;
+        }
+        .sidebar {
+            width: 270px;
+            background-color: #2c3e50;
+            padding: 20px;
+            color: white;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 26px;
+            font-weight: bold;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 10px;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .sidebar ul li {
+            margin-bottom: 20px;
+        }
+        .sidebar ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            font-size: 18px;
+            display: block;
+            padding: 12px 18px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        .sidebar ul li a:hover,
+        .sidebar ul li a.active {
+            background-color: #34495e;
+            color: #ffffff;
+            transform: translateX(5px);
+        }
+        .main-content {
+            flex: 1;
+            padding: 40px;
+        }
+        .main-content h1 {
+            margin-bottom: 20px;
+            font-size: 32px;
+            color: #2c3e50;
+        }
+        .add-vehicle-btn {
+            margin-bottom: 30px;
+        }
+        .btn {
+            padding: 10px 20px;
+            background-color: #3498db;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #2980b9;
+        }
+        .vehicle-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .vehicle-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 300px; /* or whatever you need */
+            min-height: 500px; /* ensures equal card height */
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .vehicle-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .vehicle-info {
+            padding: 15px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .vehicle-card form {
+            margin-top: auto;
+            padding-bottom: 15px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="admin-container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Admin Panel</h2>
+        <ul>
+            <li><a href="/admin/dashboard">Main Dashboard</a></li>
+            <li><a href="/admin/clients">Client Management</a></li>
+            <li><a href="/admin/vehicles">Vehicle Inventory</a></li>
+            <li><a href="/admin/bookings">Booking Management</a></li>
+            <li><a href="/admin/history">Booking History</a></li>
+            <li><a href="/admin/profile">Admin Account</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h1>Vehicle Inventory</h1>
+
+        <!-- Button to Add a New Vehicle -->
+        <div class="add-vehicle-btn">
+            <a href="{{ url_for('add_vehicle') }}">
+                <button class="btn">Add New Vehicle</button>
+            </a>
+        </div>
+
+        <div class="vehicle-list">
+            <!-- Loop through all available vehicles and display them -->
+            {% for vehicle in vehicles %}
+                <div class="vehicle-card">
+                    <!-- Vehicle Image -->
+                    <img 
+                        src="{{ url_for('static', filename=vehicle.image_url.replace('static/', '')) }}" 
+                        alt="{{ vehicle.make }} {{ vehicle.model }}" 
+                        class="vehicle-image"
+                    >
+
+                    <!-- Vehicle Info -->
+                    <div class="vehicle-info">
+                        <h3>{{ vehicle.make }} {{ vehicle.model }} ({{ vehicle.year }})</h3>
+                        <p><strong>Description:</strong> {{ vehicle.description }}</p>
+                        <p><strong>Rate:</strong> ₹{{ vehicle.rate }} / Km</p>
+                        <p><strong>Availability:</strong> {% if vehicle.available %} Available {% else %} Not Available {% endif %}</p>
+                    </div>
+                    <!-- Delete Button -->
+                    <div style="padding: 20px; text-align: center;">
+                        <form action="{{ url_for('delete_vehicle', vehicle_id=vehicle.id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this vehicle?');">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>                        
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const images = document.querySelectorAll('.vehicle-image');
+
+        images.forEach(function(img) {
+            img.onerror = function() {
+                this.onerror = null; // Prevent infinite loop
+                this.src = "{{ url_for('static', filename='images/default.jpg') }}";
+            };
+        });
+    });
+</script>
+
+</body>
+</html>

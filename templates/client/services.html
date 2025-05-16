@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pune Cab Services</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+    
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+
+    
+/* Top Bar */
+/* Reset some defaults */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Beautiful Top Bar */
+.top-bar {
+  background: linear-gradient(to right, #141e30, #243b55, #1a2a3a);
+  color: #ffffff;
+  padding: 6px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 15px;
+  height: 40px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.top-bar .contact-info span {
+  margin-right: 15px;
+}
+
+.top-bar .client-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logout-btn {
+  background-color: #ff4d4d;
+  padding: 2px 8px;
+  border-radius: 4px;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+
+.logout-btn:hover {
+  background-color: #e60000;
+}
+
+.top-bar .social-icons a {
+  color: #ffffff;
+  font-size: 16px;
+  margin-left: 12px;
+  transition: color 0.3s;
+}
+
+.top-bar .social-icons a:hover {
+  color: #f0c330;
+}
+
+/* Beautiful Navbar */
+/* Navbar Styling */
+.navbar {
+  background: linear-gradient(to right, #1e3c72, #2a5298, #1e3c72);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 20px;
+  height: 70px;
+  font-family: 'Segoe UI', sans-serif;
+  color: #ffffff;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo container and alignment */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo img {
+  height: 50px;
+  width: auto;
+  border-radius: 8px;
+}
+
+/* Company name styling */
+.logo-name h1 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.logo-name span {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  color: #ffa500; /* Accent color for 'Tours & Travels' */
+  margin-top: 2px;
+}
+
+
+/* Nav Links */
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+
+.nav-links li a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 25px;
+  font-weight: 500;
+  padding: 6px 20px;
+  transition: background 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #243b55;
+  background-color: #549cef;
+}
+    h1 {
+      margin-bottom: 1rem;
+      color: #1a237e;
+      text-align: center;
+      text-shadow: 1px 1px 3px #aabbff;
+    }
+
+    .services {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center; /* center horizontally */
+  max-width: 900px; /* container max width */
+  width: 100%; /* full width up to max */
+  margin: 0 auto 2rem; /* center horizontally */
+  padding: 0 1rem; /* horizontal padding for smaller screens */
+}
+
+    .service-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(26,35,126,0.2);
+      width: 300px;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 24px rgba(26,35,126,0.35);
+    }
+
+    .service-card img {
+      width: 100%;
+      border-radius: 12px;
+      object-fit: cover;
+      max-height: 180px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .service-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin: 0.8rem 0 0.4rem;
+      color: #303f9f;
+    }
+
+    .service-desc {
+      font-size: 1rem;
+      color: #555;
+      text-align: center;
+      flex-grow: 1;
+      margin-bottom: 1rem;
+      padding: 0 0.5rem;
+    }
+
+    .btn-calc {
+      background: #3f51b5;
+      color: white;
+      border: none;
+      padding: 0.65rem 1.2rem;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(63,81,181,0.3);
+      transition: background 0.3s ease;
+    }
+    .btn-calc:hover {
+      background: #283593;
+      box-shadow: 0 6px 14px rgba(40,53,147,0.5);
+    }
+
+    /* Popup styling */
+    .popup-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+    .popup-overlay.active {
+      display: flex;
+    }
+    .popup-form {
+      background: white;
+      border-radius: 12px;
+      width: 95%;
+      max-width: 450px;
+      padding: 1.8rem 2rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      position: relative;
+      font-size: 1rem;
+    }
+
+    .popup-form h3 {
+      margin-top: 0;
+      margin-bottom: 1.5rem;
+      color: #303f9f;
+      text-align: center;
+      font-weight: 700;
+      text-shadow: 0 0 6px #aabbff;
+    }
+
+    .popup-close {
+      position: absolute;
+      top: 0.6rem;
+      right: 1rem;
+      font-size: 1.8rem;
+      color: #888;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+    .popup-close:hover {
+      color: #3f51b5;
+    }
+
+    label {
+      display: block;
+      margin: 0.8rem 0 0.3rem;
+      font-weight: 600;
+      color: #3949ab;
+    }
+    input[type="text"],
+    input[type="number"],
+    select {
+      width: 100%;
+      padding: 0.55rem 0.75rem;
+      border: 1.8px solid #aab6fe;
+      border-radius: 6px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+      outline-offset: 2px;
+      box-sizing: border-box;
+    }
+    input[type="text"]:focus,
+    input[type="number"]:focus,
+    select:focus {
+      border-color: #3f51b5;
+      outline: none;
+    }
+
+    button[type="submit"] {
+      margin-top: 1.4rem;
+      width: 100%;
+      padding: 0.7rem;
+      background: #3f51b5;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 5px 12px rgba(63,81,181,0.4);
+      transition: background 0.3s ease;
+    }
+    button[type="submit"]:hover {
+      background: #283593;
+      box-shadow: 0 6px 16px rgba(40,53,147,0.6);
+    }
+
+    .result {
+      margin-top: 1rem;
+      font-weight: 700;
+      color: #2e7d32;
+      text-align: center;
+      font-size: 1.1rem;
+      min-height: 2rem;
+    }
+
+    /* Suggestions dropdown */
+    .suggestions {
+      list-style: none;
+      padding-left: 0;
+      max-height: 150px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      display: none;
+      position: absolute;
+      background: white;
+      z-index: 1000;
+      width: 100%;
+    }
+    .suggestions li {
+      padding: 0.3rem 0.5rem;
+      cursor: pointer;
+    }
+    .suggestions li:hover {
+      background-color: #f0f0f0;
+    }
+
+    /* Position relative for pickup input container to place suggestions */
+    .input-group {
+      position: relative;
+    }
+    /* Footer */
+.footer-modern {
+  background: linear-gradient(to right, #141e30, #243b55, #1a2a3a);
+  padding: 60px 40px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 50px;
+  color: #ffffff;
+  animation: fadeUp 1s ease-in-out forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.footer-section {
+  flex: 1 1 300px;
+  min-width: 250px;
+}
+
+.footer-section h3 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: #ffffff;
+  position: relative;
+}
+
+.footer-section h3::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 3px;
+  background-color: #00bcd4;
+  margin-top: 8px;
+  border-radius: 2px;
+}
+
+.route-columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.route-columns ul {
+  list-style: none;
+  padding: 0;
+  min-width: 160px;
+}
+
+.route-columns ul li {
+  margin-bottom: 10px;
+}
+
+.route-columns ul li a {
+  color: #dcdcdc;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.route-columns ul li a:hover {
+  color: #00bcd4;
+}
+
+.footer-section p,
+.footer-section p a {
+  margin: 6px 0;
+  line-height: 1.6;
+  font-size: 15px;
+  color: #dcdcdc;
+  text-decoration: none;
+}
+
+.footer-section p a:hover {
+  color: #00bcd4;
+}
+
+
+
+/* Animation */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-modern {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .route-columns {
+    justify-content: center;
+  }
+
+  .footer-section h3::after {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+/* Square Map Section */
+.footer-section.map-section {
+  flex: 1 1 300px;
+  min-width: 250px;
+  text-align: center;
+}
+
+#footer-map {
+  width: 100%;
+  height: 300px; /* fixed height */
+  max-width: 300px; /* makes it square */
+  margin: 0 auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+.no-line::after {
+  content: none !important;
+  
+}
+.no-line{
+  font-size: 22px;         /* Adjust as needed */
+  font-weight: 600;        /* Can be 700 for bolder text */
+  padding-bottom: 10px;    /* Adds space below the heading */
+  margin: 0;               /* Optional: reset margin */
+  color: #ffffff;  
+}
+
+
+
+@media (max-width: 480px) {
+  #footer-map {
+    height: 250px;
+    max-width: 250px;
+  }
+}
+  </style>
+</head>
+<body>
+<!-- Top Header -->
+  <header class="top-bar">
+    <div class="contact-info">
+      <span>☎ +91 9421637393</span>
+      <span>☎ +91 9022951550</span>
+      <span>✉ shivamsevakendra007@gmail.com</span>
+    </div>
+
+    <div class="client-name">
+      {% if client_name %}
+        <span>Welcome, {{ client_name }}!</span>
+        <a href="/logout" class="logout-btn">Logout</a>
+      {% else %}
+        <span>Welcome, Guest!</span>
+      {% endif %}
+    </div>
+
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="logo-container">
+      <div class="logo">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Gayatri Tours & Travels">
+      </div>
+      <div class="logo-name">
+        <h1>Gayatri <span>Tours & Travels</span></h1>
+      </div>
+    </div>
+
+    <ul class="nav-links">
+     <li><a href="{{ url_for('client_home') }}">Home</a></li>
+      <li><a href="{{ url_for('client_about') }}">About</a></li>
+      <li><a href="{{ url_for('calculate') }}">Services</a></li>
+      <li><a href="{{ url_for('client_packages') }}">Packages</a></li>
+      <li><a href="/client/vehicles">Booking</a></li>
+      <li><a href="">Gallery</a></li>
+      <li><a href="">Blogs</a></li>
+      <li><a href="">Contact</a></li>
+  </ul>
+  
+  </nav>
+  <h1>Pune Cab Services</h1>
+
+  <div class="services">
+    <div class="service-card" data-service="Inside Pune" tabindex="0" role="button" aria-pressed="false" aria-label="Select Inside Pune service">
+      <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="City Cab" />
+      <div class="service-title">Inside Pune</div>
+      <div class="service-desc">Affordable rides within Pune city limits. Perfect for daily commuting and short trips.</div>
+      <button class="btn-calc" type="button" aria-label="Calculate fare for Inside Pune">Calculate Fare</button>
+    </div>
+
+    <div class="service-card" data-service="Outside Pune" tabindex="0" role="button" aria-pressed="false" aria-label="Select Outside Pune service">
+      <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=400&q=80" alt="Outstation Cab" />
+      <div class="service-title">Outside Pune</div>
+      <div class="service-desc">Long-distance rides outside Pune city. Comfortable and safe for outstation travel.</div>
+      <button class="btn-calc" type="button" aria-label="Calculate fare for Outside Pune">Calculate Fare</button>
+    </div>
+  </div>
+
+<!-- Popup Fare Calculator -->
+  <div class="popup-overlay" role="dialog" aria-modal="true" aria-labelledby="popupTitle" aria-hidden="true">
+    <div class="popup-form">
+      <span class="popup-close" role="button" aria-label="Close calculator popup">&times;</span>
+      <h3 id="popupTitle">Fare Calculator</h3>
+
+      <form id="fareForm" autocomplete="off" aria-describedby="formInstructions">
+        <p id="formInstructions" style="font-size:0.9rem;color:#666;">Enter pickup and drop locations. Select cab type to calculate fare.</p>
+
+        <label for="pickup">Pickup Location</label>
+        <input type="text" id="pickup" name="pickup" placeholder="Enter pickup location" required aria-required="true" />
+        <ul id="pickup-suggestions" class="suggestions"></ul>
+
+        <label for="drop">Drop Location</label>
+        <input type="text" id="drop" name="drop" placeholder="Enter drop location" required aria-required="true" />
+        <ul id="drop-suggestions" class="suggestions"></ul>
+
+        <label for="cabType">Cab Type</label>
+        <select id="cabType" name="cabType" required aria-required="true">
+          <option value="Sedan">Aura Sedan</option>
+        </select>
+
+        <label>
+          <input type="radio" name="acType" value="AC" checked> AC
+        </label>
+        <label>
+          <input type="radio" name="acType" value="Non-AC"> Non-AC
+        </label>
+
+
+        <button type="submit">Calculate Fare</button>
+      </form>
+      <div class="result" aria-live="polite"></div>
+    </div>
+  </div>
+   <!-- Footer -->
+<footer class="footer-modern">
+  <div class="footer-section routes">
+    <h3>Popular Routes</h3>
+    <div class="route-columns">
+      <ul>
+        <li><a href="#">Pune to Mumbai</a></li>
+        <li><a href="#">Pune to Goa</a></li>
+        <li><a href="#">Mumbai to Delhi</a></li>
+        <li><a href="#">Delhi to Manali</a></li>
+        <li><a href="#">Hyderabad to Bangalore</a></li>
+      </ul>
+      <ul>
+        <li><a href="#">Chennai to Coimbatore</a></li>
+        <li><a href="#">Kolkata to Darjeeling</a></li>
+        <li><a href="#">Ahmedabad to Udaipur</a></li>
+        <li><a href="#">Jaipur to Jodhpur</a></li>
+        <li><a href="#">Nagpur to Pune</a></li>
+      </ul>
+      <ul>
+        <li><a href="#">Bangalore to Mysore</a></li>
+        <li><a href="#">Pune to Nashik</a></li>
+        <li><a href="#">Mumbai to Surat</a></li>
+        <li><a href="#">Delhi to Jaipur</a></li>
+        <li><a href="#">Chandigarh to Shimla</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-section contact">
+    <h3>Contact Us</h3>
+    <p><strong>Gayatri Tours & Travels</strong></p>
+    <p>Flat No 202 Swapnshilp Apartment<br>Abhinav College Road, Narhe, Pune 411041</p>
+    <p>Email: <a href="mailto:gayatritoursandtravels@gmail.com">gayatritoursandtravels@gmail.com</a></p>
+    <p>Phone: <a href="tel:+919022951550">+91 9022951550</a></p>
+  </div>
+
+  <div class="footer-section map-section">
+  <h4 class="no-line">📍 Our Location</h4>
+    <div id="footer-map"></div>
+  </div>
+</footer>
+
+<!-- Leaflet CDN -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<script>
+  const lat = 18.43954;
+  const lng = 73.82887;
+
+  const map = L.map('footer-map').setView([lat, lng], 16);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  L.marker([lat, lng]).addTo(map)
+    .bindPopup('Gayatri Tours & Travels<br>Abhinav College Road, Narhe, Pune')
+    .openPopup();
+
+  setTimeout(() => {
+    map.invalidateSize();
+  }, 200);
+</script>
+
+  <script>
+    // Service cards and popup elements
+    const serviceCards = document.querySelectorAll('.service-card');
+    const popup = document.querySelector('.popup-overlay');
+    const popupClose = popup.querySelector('.popup-close');
+    const fareForm = document.getElementById('fareForm');
+    const resultDiv = document.getElementById('result');
+
+    // Cab fare per km rates by cab type
+    const cabRates = {
+      "Micro": 10,
+      "Mini": 15,
+      "Prime Sedan": 20,
+      "Prime SUV": 25
+    };
+
+    // Pickup location autocomplete data
+    const pickupLocations = [
+      "Shaniwar Wada",
+      "FC Road",
+      "Viman Nagar",
+      "Koregaon Park",
+      "Hadapsar",
+      "Kothrud",
+      "Baner",
+      "Pimpri-Chinchwad",
+      "Hinjewadi",
+      "Wakad"
+    ];
+
+    // Open popup and set service context
+    serviceCards.forEach(card => {
+      card.querySelector('.btn-calc').addEventListener('click', () => {
+        openPopup(card.dataset.service);
+      });
+
+      // Accessibility: allow Enter key to open popup
+      card.addEventListener('keydown', (e) => {
+        if(e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openPopup(card.dataset.service);
+        }
+      });
+    });
+
+    // Open popup function
+    function openPopup(serviceName) {
+      popup.classList.add('active');
+      popup.setAttribute('aria-hidden', 'false');
+      fareForm.reset();
+      resultDiv.textContent = '';
+      // Optionally, we could show or note the selected service somewhere in popup
+      // Focus pickup input for immediate typing
+      const pickupInput = document.getElementById('pickup');
+      pickupInput.focus();
+    }
+
+    // Close popup function
+    function closePopup() {
+      popup.classList.remove('active');
+      popup.setAttribute('aria-hidden', 'true');
+      // Return focus to first service card for accessibility
+      serviceCards[0].querySelector('.btn-calc').focus();
+    }
+
+    popupClose.addEventListener('click', closePopup);
+
+    // Close popup on overlay click (not on popup form)
+    popup.addEventListener('click', (e) => {
+      if (e.target === popup) closePopup();
+    });
+
+    // Close popup on Escape key
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && popup.classList.contains('active')) {
+        closePopup();
+      }
+    });
+
+    // Autocomplete for pickup location input
+    const pickupInput = document.getElementById('pickup');
+const suggestionsList = document.getElementById('pickup-suggestions');
+
+pickupInput.addEventListener('input', () => {
+  const query = pickupInput.value.trim();
+  if (query.length < 3) { // only search after 3 chars to limit requests
+    suggestionsList.innerHTML = '';
+    suggestionsList.style.display = 'none';
+    return;
+  }
+
+  fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&limit=5&addressdetails=1`)
+    .then(response => response.json())
+    .then(data => {
+      if (!data.length) {
+        suggestionsList.innerHTML = '';
+        suggestionsList.style.display = 'none';
+        return;
+      }
+      suggestionsList.innerHTML = data.map(place => {
+        // show display name for each suggestion
+        return `<li tabindex="0" role="option">${place.display_name}</li>`;
+      }).join('');
+      suggestionsList.style.display = 'block';
+    })
+    .catch(() => {
+      suggestionsList.innerHTML = '';
+      suggestionsList.style.display = 'none';
+    });
+});
+
+// Same event handlers for click and keyboard navigation on suggestions
+suggestionsList.addEventListener('click', (e) => {
+  if (e.target.tagName.toLowerCase() === 'li') {
+    pickupInput.value = e.target.textContent;
+    suggestionsList.innerHTML = '';
+    suggestionsList.style.display = 'none';
+    pickupInput.focus();
+  }
+});
+
+suggestionsList.addEventListener('keydown', (e) => {
+  const active = document.activeElement;
+  if (active.parentElement !== suggestionsList) return;
+
+  if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    if (active.nextElementSibling) active.nextElementSibling.focus();
+    else suggestionsList.firstElementChild.focus();
+  } else if (e.key === 'ArrowUp') {
+    e.preventDefault();
+    if (active.previousElementSibling) active.previousElementSibling.focus();
+    else suggestionsList.lastElementChild.focus();
+  } else if (e.key === 'Enter' || e.key === 'Tab') {
+    e.preventDefault();
+    pickupInput.value = active.textContent;
+    suggestionsList.innerHTML = '';
+    suggestionsList.style.display = 'none';
+    pickupInput.focus();
+  } else if (e.key === 'Escape') {
+    suggestionsList.innerHTML = '';
+    suggestionsList.style.display = 'none';
+    pickupInput.focus();
+  }
+});
+
+pickupInput.addEventListener('blur', () => {
+  setTimeout(() => {
+    suggestionsList.innerHTML = '';
+    suggestionsList.style.display = 'none';
+  }, 200);
+});
+
+    // Fare calculation on form submit
+    fareForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const pickup = fareForm.pickup.value.trim();
+      const drop = fareForm.drop.value.trim();
+      const cabType = fareForm.cabType.value;
+      const distance = parseFloat(fareForm.distance.value);
+
+      if (!pickup || !drop || !cabType || isNaN(distance) || distance <= 0) {
+        resultDiv.textContent = 'Please fill all fields with valid data.';
+        resultDiv.style.color = 'red';
+        return;
+      }
+
+      const rate = cabRates[cabType];
+      if (!rate) {
+        resultDiv.textContent = 'Invalid cab type selected.';
+        resultDiv.style.color = 'red';
+        return;
+      }
+
+      const fare = rate * distance;
+      resultDiv.style.color = '#2e7d32';
+      resultDiv.textContent = `Estimated fare for ${cabType} cab from ${pickup} to ${drop} (${distance} km) is ₹${fare.toFixed(2)}.`;
+    });
+
+      function fetchSuggestions(query, callback) {
+      fetch(`https://nominatim.openstreetmap.org/search?format=json&addressdetails=1&limit=5&q=${encodeURIComponent(query)}`)
+        .then(response => response.json())
+        .then(data => callback(data))
+        .catch(() => callback([]));
+    }
+
+    // Function to handle input events for suggestions
+    function setupAutocomplete(inputId, suggestionsId, coords) {
+      const input = document.getElementById(inputId);
+      const suggestionsList = document.getElementById(suggestionsId);
+
+      input.addEventListener('input', () => {
+        const query = input.value.trim();
+        if (query.length < 3) {
+          suggestionsList.style.display = 'none';
+          suggestionsList.innerHTML = '';
+          return;
+        }
+
+        fetchSuggestions(query, (data) => {
+          suggestionsList.innerHTML = '';
+          if (data.length > 0) {
+            data.forEach(place => {
+              const li = document.createElement('li');
+              li.textContent = place.display_name;
+              li.addEventListener('click', () => {
+                input.value = place.display_name;
+                coords.lat = parseFloat(place.lat);
+                coords.lon = parseFloat(place.lon);
+                suggestionsList.style.display = 'none';
+                suggestionsList.innerHTML = '';
+              });
+              suggestionsList.appendChild(li);
+            });
+            suggestionsList.style.display = 'block';
+          } else {
+            suggestionsList.style.display = 'none';
+          }
+        });
+      });
+
+      // Hide suggestions when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!input.contains(e.target) && !suggestionsList.contains(e.target)) {
+          suggestionsList.style.display = 'none';
+        }
+      });
+    }
+
+    // Haversine formula to calculate distance between two coordinates
+   function calculateDistance(lat1, lon1, lat2, lon2) {
+  const R = 6371; // Radius of the Earth in km
+  const dLat = (lat2 - lat1) * Math.PI / 180;
+  const dLon = (lon2 - lon1) * Math.PI / 180;
+  const a =
+    0.5 - Math.cos(dLat)/2 +
+    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+    (1 - Math.cos(dLon))/2;
+
+  return R * 2 * Math.asin(Math.sqrt(a));
+}
+
+const pickupCoords = {};
+const dropCoords = {};
+
+// Assume setupAutocomplete already defined somewhere
+setupAutocomplete('pickup', 'pickup-suggestions', pickupCoords);
+setupAutocomplete('drop', 'drop-suggestions', dropCoords);
+
+document.getElementById('fareForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const cabType = document.getElementById('cabType').value;
+  const acType = document.querySelector('input[name="acType"]:checked').value;
+  const resultDiv = document.querySelector('.result');
+
+  if (!pickupCoords.lat || !dropCoords.lat) {
+    resultDiv.textContent = 'Please select valid pickup and drop locations from suggestions.';
+    return;
+  }
+
+  const distance = calculateDistance(pickupCoords.lat, pickupCoords.lon, dropCoords.lat, dropCoords.lon);
+  let fare = 0;
+
+ if (distance <= 1.5) {
+  // Flat rate for <= 1.5 km
+  fare = 37;
+} else if (distance <= 50) {
+  // ₹25 per km for distance between 1.5 km and 50 km
+  fare = distance * 25;
+} else {
+  // Distance > 50 km
+  const baseFare = 50 * 25; // First 50 km at ₹25/km
+  const extraDistance = distance - 50;
+  const extraFarePerKm = acType === 'AC' ? 21 : 17;
+  fare = baseFare + (extraDistance * extraFarePerKm);
+}
+
+
+  resultDiv.textContent = `Estimated Fare: ₹${fare.toFixed(2)} for ${distance.toFixed(2)} km (${acType}, ${cabType})`;
+});
+
+  </script>
+  </script>
+</body>
+</html>

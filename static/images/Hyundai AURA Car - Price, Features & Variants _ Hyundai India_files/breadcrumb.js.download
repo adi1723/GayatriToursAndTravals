@@ -1,0 +1,36 @@
+
+$(function(){
+	$('.locWrap > li:gt(0)').each(function(index){
+		var id = index + 1;
+		var name = $(this).find('span').text();
+		var link = $(this).find('a').attr('href');
+		$('#listId'+id).val(link);
+		$('#listNm'+id).val(name);
+	});
+
+	$("#bread").text(function() {
+	    return JSON.stringify({
+		     "@context": "http://schema.org",
+		     "@type": "BreadcrumbList",
+		     "itemListElement":
+		     [
+		      {
+		       "@type": "ListItem",
+		       "position": 1,
+		       "item": {"@id": $('#listId1').val(), "name": $('#listNm1').val()}
+		      },
+		      {
+		       "@type": "ListItem",
+		      "position": 2,
+		      "item": {"@id": $('#listId2').val(), "name": $('#listNm2').val()}
+		      },
+		      {
+		       "@type": "ListItem",
+		      "position": 3,
+		      "item": {"@id": $('#listId3').val(), "name": $('#listNm3').val()}
+		      }
+		     ]
+	    });
+	});
+});
+

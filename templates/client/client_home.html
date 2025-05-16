@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gayatri Tours & Travels</title>
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+  <!-- Leaflet CSS & JS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <!-- Favicon -->
+  <link rel="icon" href="{{ url_for('static', filename='images/favicon.png') }}" type="image/png">
+
+  <style>
+/* Global Reset and Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+/* Top Bar */
+/* Reset some defaults */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Beautiful Top Bar */
+.top-bar {
+  background: linear-gradient(to right, #141e30, #243b55, #1a2a3a);
+  color: #ffffff;
+  padding: 6px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 15px;
+  height: 40px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.top-bar .contact-info span {
+  margin-right: 15px;
+}
+
+.top-bar .client-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logout-btn {
+  background-color: #ff4d4d;
+  padding: 2px 8px;
+  border-radius: 4px;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+
+.logout-btn:hover {
+  background-color: #e60000;
+}
+
+.top-bar .social-icons a {
+  color: #ffffff;
+  font-size: 16px;
+  margin-left: 12px;
+  transition: color 0.3s;
+}
+
+.top-bar .social-icons a:hover {
+  color: #f0c330;
+}
+
+/* Beautiful Navbar */
+/* Navbar Styling */
+.navbar {
+  background: linear-gradient(to right, #1e3c72, #2a5298, #1e3c72);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 20px;
+  height: 70px;
+  font-family: 'Segoe UI', sans-serif;
+  color: #ffffff;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo container and alignment */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo img {
+  height: 50px;
+  width: auto;
+  border-radius: 8px;
+}
+
+/* Company name styling */
+.logo-name h1 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.logo-name span {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  color: #ffa500; /* Accent color for 'Tours & Travels' */
+  margin-top: 2px;
+}
+
+/* Nav Links */
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+
+.nav-links li a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 10px;
+  font-weight: 500;
+  padding: 6px 5px;
+  transition: background 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #243b55;
+  background-color: #243b55;
+}
+
+
+/* Main Content */
+main {
+  padding: 10px 20px;
+}
+
+.content-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #2c3e50;
+  animation: fadeIn 1s ease-in-out;
+  line-height: 1.2;
+  margin: 0;
+  padding: 0 10px 2px 10px; /* only 2px bottom space */
+  height: auto;
+}
+
+.content-header h1 {
+  font-size: 30px;
+  margin: 0;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.content-header p {
+  font-size: 15px;
+  margin: 0;
+  animation: fadeIn 1.5s ease-in-out;
+  color: #555;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.image-video-section {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  align-items: center;
+}
+
+.image-scroll {
+  height: 500px;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 12px;
+  padding: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.scroll-container {
+  display: flex;
+  gap: 10px;
+  width: max-content;
+  animation: scroll-left 25s linear infinite;
+  align-items: center;
+}
+
+.scroll-container img {
+  height: 470px;
+  object-fit: contain;
+  border: 2px solid #000;
+  border-radius: 10px;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Auto Scroll Animation */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+
+/* Hide scrollbar */
+.image-scroll::-webkit-scrollbar {
+  display: none;
+}
+.image-scroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Video container */
+.video-container video {
+  height: 470px;
+  width: auto;
+  border: 2px solid #000;
+  border-radius: 10px;
+  display: block;
+  flex: 1 1 35%;
+  object-fit: contain;
+}
+
+
+
+/* Features Section */
+/* Features Section */
+/* Features Section */
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: stretch; /* Ensure all feature boxes are the same height */
+  padding: 50px 20px;
+  gap: 30px;
+  animation: fadeInUp 1.5s ease-in-out;
+}
+
+/* Feature Box */
+.feature-box {
+  background-color: white;
+  border-radius: 8px;
+  padding: 30px;
+  width: 250px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transform: translateY(20px);
+  opacity: 0;
+  animation: accretive 1s ease-in-out forwards;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+/* Feature Box Header */
+.feature-box h2 {
+  font-size: 1.6rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+/* Feature Box Paragraph */
+.feature-box p {
+  font-size: 1rem;
+  color: #777;
+}
+
+/* Hover Effect */
+.feature-box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Accretive Animation for Feature Boxes */
+@keyframes accretive {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Animation for Feature Section */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+  .features {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .feature-box {
+    width: 90%;
+    margin-bottom: 20px;
+  }
+}
+
+
+/* Why Choose Us */
+/* Section Styles */
+.why-choose-us {
+  padding: 50px 20px;
+  text-align: center;
+  background-color: #f4f4f4;
+  animation: fadeInUp 1.5s ease-in-out;
+}
+
+.why-choose-us h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.why-choose-us p {
+  font-size: 18px;
+  color: #777;
+  margin-bottom: 40px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Reasons Container */
+.reasons-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+  animation: fadeInUp 1.5s ease-in-out;
+}
+
+/* Reason Box Styles */
+.reason-box {
+  background-color: white;
+  border-radius: 8px;
+  padding: 30px;
+  width: 250px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transform: translateY(20px);
+  opacity: 0;
+  animation: accretive 1s ease-in-out forwards;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.reason-box i {
+  font-size: 40px;
+  color: #2a5298; /* Green color */
+  margin-bottom: 15px;
+}
+
+.reason-box h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.reason-box p {
+  font-size: 16px;
+  color: #777;
+}
+
+/* Keyframe Animations */
+@keyframes accretive {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .reasons-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .reason-box {
+    width: 90%;
+    margin-bottom: 20px;
+  }
+}
+
+
+/* Contact Section */
+/* Section Styles */
+.contact-modern {
+  padding: 20px;
+  background-color: #f4f4f4;
+  animation: fadeInUp 1.5s ease-in-out;
+}
+
+.contact-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+/* Contact Box that contains everything */
+.contact-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 30px;
+  flex-wrap: wrap;
+  width: 100%;
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  animation: accretive 1.5s ease-in-out forwards;
+}
+
+/* Image Style */
+.contact-img {
+  flex: 1;
+  height: 450px; /* Reduced height for better balance */
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.contact-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Contact Details */
+.contact-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  justify-content: center;
+  padding: 0 20px;
+}
+
+/* Info Card Styles */
+.info-card {
+  background-color: #fff;
+  padding: 18px 24px;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: accretive 1s ease-in-out forwards;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  margin-bottom: 20px; /* optional spacing between cards */
+}
+
+.info-card:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(10px);
+}
+
+.info-card i {
+  font-size: 28px;
+  color: #4caf50;
+  min-width: 32px;
+}
+
+.info-card p {
+  font-size: 16px;
+  color: #333;
+  margin: 0;
+  line-height: 1.4;
+}
+
+
+/* Call to Action */
+.contact-cta {
+  text-align: center;
+}
+
+.contact-cta h2 {
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.contact-btn {
+  padding: 12px 30px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+}
+
+.contact-btn:hover {
+  background-color: #388e3c;
+}
+
+/* Keyframe Animations */
+@keyframes accretive {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+
+  }
+  }
+/* WhatsApp Button Styling */
+.whatsapp-btn {
+  position: fixed;
+  bottom: 30px;
+  background-color: #25d366;
+  color: white;
+  border-radius: 50%;
+  padding: 15px;
+  font-size: 24px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.whatsapp-btn:hover {
+  transform: scale(1.1);
+}
+
+/* Left position */
+.whatsapp-btn.left {
+  left: 30px;
+}
+
+/* Right position */
+.whatsapp-btn.right {
+  right: 30px;
+}
+
+/* Mobile responsiveness for WhatsApp button */
+@media (max-width: 768px) {
+  .whatsapp-btn {
+    padding: 12px;
+    font-size: 22px;
+  }
+}
+
+/* Footer */
+.footer-modern {
+  background: linear-gradient(to right, #141e30, #243b55, #1a2a3a);
+  padding: 60px 40px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 50px;
+  color: #ffffff;
+  animation: fadeUp 1s ease-in-out forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.footer-section {
+  flex: 1 1 300px;
+  min-width: 250px;
+}
+
+.footer-section h3 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: #ffffff;
+  position: relative;
+}
+
+.footer-section h3::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 3px;
+  background-color: #00bcd4;
+  margin-top: 8px;
+  border-radius: 2px;
+}
+
+.route-columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.route-columns ul {
+  list-style: none;
+  padding: 0;
+  min-width: 160px;
+}
+
+.route-columns ul li {
+  margin-bottom: 10px;
+}
+
+.route-columns ul li a {
+  color: #dcdcdc;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.route-columns ul li a:hover {
+  color: #00bcd4;
+}
+
+.footer-section p,
+.footer-section p a {
+  margin: 6px 0;
+  line-height: 1.6;
+  font-size: 15px;
+  color: #dcdcdc;
+  text-decoration: none;
+}
+
+.footer-section p a:hover {
+  color: #00bcd4;
+}
+
+
+
+/* Animation */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-modern {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .route-columns {
+    justify-content: center;
+  }
+
+  .footer-section h3::after {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+/* Square Map Section */
+.footer-section.map-section {
+  flex: 1 1 300px;
+  min-width: 250px;
+  text-align: center;
+}
+
+#footer-map {
+  width: 100%;
+  height: 300px; /* fixed height */
+  max-width: 300px; /* makes it square */
+  margin: 0 auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+.no-line::after {
+  content: none !important;
+  
+}
+.no-line{
+  font-size: 22px;         /* Adjust as needed */
+  font-weight: 600;        /* Can be 700 for bolder text */
+  padding-bottom: 10px;    /* Adds space below the heading */
+  margin: 0;               /* Optional: reset margin */
+  color: #ffffff;  
+}
+
+
+
+@media (max-width: 480px) {
+  #footer-map {
+    height: 250px;
+    max-width: 250px;
+  }
+}
+
+
+  </style>
+</head>
+
+<body class="client-home">
+  <!-- Top Header -->
+  <header class="top-bar">
+    <div class="contact-info">
+      <span>☎ +91 9421637393</span>
+      <span>☎ +91 9022951550</span>
+      <span>✉ shivamsevakendra007@gmail.com</span>
+    </div>
+
+    <div class="client-name">
+      {% if client_name %}
+        <span>Welcome, {{ client_name }}!</span>
+        <a href="/logout" class="logout-btn">Logout</a>
+      {% else %}
+        <span>Welcome, Guest!</span>
+      {% endif %}
+    </div>
+
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="logo-container">
+      <div class="logo">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Gayatri Tours & Travels">
+      </div>
+      <div class="logo-name">
+        <h1>Gayatri <span>Tours & Travels</span></h1>
+      </div>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="{{ url_for('client_home') }}">Home</a></li>
+      <li><a href="{{ url_for('client_about') }}">About</a></li>
+      <li><a href="{{ url_for('calculate') }}">Services</a></li>
+      <li><a href="{{ url_for('client_packages') }}">Packages</a></li>
+      <li><a href="/client/vehicles">Booking</a></li>
+      <li><a href="">Gallery</a></li>
+      <li><a href="">Blogs</a></li>
+      <li><a href="">Contact</a></li>
+  </ul>
+  
+  </nav>
+
+  <!-- Main Content -->
+  <main>
+    <div class="content-header">
+      <h1>Welcome to Gayatri Tours & Travels</h1>
+      <p>Your comfort is our priority. Book your journey today!</p>
+    </div>
+
+<section class="image-video-section">
+  <!-- Image Scroll -->
+  <div class="image-scroll auto-scroll">
+    <div class="scroll-container">
+      <img src="https://www.hyundai.com/content/dam/hyundai/in/en/data/find-a-car/Aura/Highlights/pc/aurahighlight_top_pc.jpg" alt="Image 1">
+      <img src="https://www.hyundai.com/content/dam/hyundai/in/en/data/find-a-car/Aura/Highlights/pc/aurahighlight_int_pc.jpg" alt="Image 2">
+      <img src="https://www.hyundai.com/content/dam/hyundai/in/en/data/find-a-car/Aura/Highlights/pc/aurahighlight_top_pc.jpg" alt="Image 1">
+      <img src="https://www.hyundai.com/content/dam/hyundai/in/en/data/find-a-car/Aura/Highlights/pc/aurahighlight_int_pc.jpg" alt="Image 2">
+    </div>
+  </div>
+
+  <!-- Video -->
+  <div class="video-container">
+    <video autoplay muted loop playsinline>
+      <source src="{{ images.Aura_video }}" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</section>
+
+
+
+
+
+
+    <!-- Features Section -->
+    <section class="features">
+      <div class="feature-box">
+        <h2>Comfortable Travel</h2>
+        <p>Relax and enjoy your journey with our premium services.</p>
+      </div>
+      <div class="feature-box">
+        <h2>Affordable Packages</h2>
+        <p>Choose from a variety of budget-friendly options.</p>
+      </div>
+      <div class="feature-box">
+        <h2>Expert Guidance</h2>
+        <p>Our experienced guides ensure a smooth and informative trip.</p>
+      </div>
+      <div class="feature-box">
+        <h2>24/7 Support</h2>
+        <p>Our support team is always available to assist you.</p>
+      </div>
+      <div class="feature-box">
+        <h2>Customizable Itineraries</h2>
+        <p>Tailor your journey based on your preferences and needs.</p>
+      </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose-us">
+      <h2>WHY CHOOSE US?</h2>
+      <p>We are summarizing a few of the reasons why you might want to travel with us here, but you may find there are numerous more.</p>
+      <div class="reasons-container">
+        <div class="reason-box">
+          <i class="fas fa-clock"></i>
+          <h3>24 Hrs Support</h3>
+          <p>We are always ready to Help</p>
+        </div>
+        <div class="reason-box">
+          <i class="fas fa-thumbs-up"></i>
+          <h3>100% Safe</h3>
+          <p>We care for your safety</p>
+        </div>
+        <div class="reason-box">
+          <i class="fas fa-map-marker-alt"></i>
+          <h3>GPS</h3>
+          <p>Track your journey on the go</p>
+        </div>
+        <div class="reason-box">
+          <i class="fas fa-home"></i>
+          <h3>Pickup</h3>
+          <p>Onboard according to your choice</p>
+        </div>
+        <div class="reason-box">
+          <i class="fas fa-percent"></i>
+          <h3>Discount</h3>
+          <p>Best Rates always guaranteed</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Contact Section -->
+  <section class="contact-modern">
+  <div class="contact-container">
+    <div class="contact-box">
+      <div class="contact-img">
+        <img src="https://www.hyundai.com/content/dam/hyundai/in/en/data/find-a-car/Aura/Highlights/pc/aurahighlight_top_pc.jpg" alt="Car Image">
+      </div>
+      <div class="contact-details">
+        <div class="info-card">
+          <i class="fas fa-envelope"></i>
+          <p>gayatritoursandtravels@gmail.com</p>
+        </div>
+        <div class="info-card">
+          <i class="fas fa-phone-alt"></i>
+          <p>+91 9022951550</p>
+        </div>
+        <div class="info-card">
+          <i class="fas fa-map-marker-alt"></i>
+          <p><strong>Gayatri Tours & Travels</strong><br>Flat No 202 Swapnshilp Apartmnet,<br>Abhinav College Road,<br>Narhe, Pune - 411041</p>
+        </div>
+        <div class="contact-cta">
+          <h2>Let's contact us for more updates !!</h2>
+          <button class="contact-btn">Contact Us</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WhatsApp Button (Left) -->
+  <a href="https://wa.me/+919421637393" class="whatsapp-btn left" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- WhatsApp Button (Right) -->
+  <a href="https://wa.me/+919021951550" class="whatsapp-btn right" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  </main>
+
+  <!-- Footer -->
+<footer class="footer-modern">
+  <div class="footer-section routes">
+    <h3>Popular Routes</h3>
+    <div class="route-columns">
+      <ul>
+        <li><a href="#">Pune to Mumbai</a></li>
+        <li><a href="#">Pune to Goa</a></li>
+        <li><a href="#">Mumbai to Delhi</a></li>
+        <li><a href="#">Delhi to Manali</a></li>
+        <li><a href="#">Hyderabad to Bangalore</a></li>
+      </ul>
+      <ul>
+        <li><a href="#">Chennai to Coimbatore</a></li>
+        <li><a href="#">Kolkata to Darjeeling</a></li>
+        <li><a href="#">Ahmedabad to Udaipur</a></li>
+        <li><a href="#">Jaipur to Jodhpur</a></li>
+        <li><a href="#">Nagpur to Pune</a></li>
+      </ul>
+      <ul>
+        <li><a href="#">Bangalore to Mysore</a></li>
+        <li><a href="#">Pune to Nashik</a></li>
+        <li><a href="#">Mumbai to Surat</a></li>
+        <li><a href="#">Delhi to Jaipur</a></li>
+        <li><a href="#">Chandigarh to Shimla</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-section contact">
+    <h3>Contact Us</h3>
+    <p><strong>Gayatri Tours & Travels</strong></p>
+    <p>Flat No 202 Swapnshilp Apartment<br>Abhinav College Road, Narhe, Pune 411041</p>
+    <p>Email: <a href="mailto:gayatritoursandtravels@gmail.com">gayatritoursandtravels@gmail.com</a></p>
+    <p>Phone: <a href="tel:+919022951550">+91 9022951550</a></p>
+  </div>
+
+  <div class="footer-section map-section">
+  <h4 class="no-line">📍 Our Location</h4>
+    <div id="footer-map"></div>
+  </div>
+</footer>
+
+<!-- Leaflet CDN -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<script>
+  
+  const lat = 18.43954;
+  const lng = 73.82887;
+
+  const map = L.map('footer-map').setView([lat, lng], 16);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  L.marker([lat, lng]).addTo(map)
+    .bindPopup('Gayatri Tours & Travels<br>Abhinav College Road, Narhe, Pune')
+    .openPopup();
+
+  setTimeout(() => {
+    map.invalidateSize();
+  }, 200);
+</script>
+
+
+</html>

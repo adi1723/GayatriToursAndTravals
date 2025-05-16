@@ -1,0 +1,97 @@
+/* 
+	PGOO Gallery
+*/
+
+; (function ($) {
+
+
+	$(".pgoo .sliderWrap").ixSlideMax();
+	$(".pgoo .thumbsWrap").ixSlideMax();
+	var thumbPerItems = 3;
+
+	//Event
+	$(".pgoo .sliderWrap").on("ixSlideMax:change", function (e) {
+		var i = e.currentIndex;
+		var t = e.totalLength;
+
+		$(this).find(".sliderTxtList").html(Number(i + 1) + "/" + t);
+	});
+
+
+	// slide img to next
+	$(".pgoo .sliderWrap .ix-btn-next").bind("click tab", function () {
+		var targetComponent = $(this).closest(".pgoo");
+		var targetIndex = targetComponent.find(".sliderWrap").ixSlideMax("getCurrentIndex");
+
+		targetComponent.find(".thumbGalleryList li").eq(targetIndex).addClass("on").siblings().removeClass("on");
+
+		if ((targetIndex > 1) && (targetIndex % thumbPerItems == 0)) {
+			//thumbs pages slide to next
+			targetComponent.find(".thumbsWrap .ix-btn-next").click();
+		}
+	});
+
+	// slide img to previous
+	$(".pgoo .sliderWrap .ix-btn-prev").bind("click tab", function () {
+		var targetComponent = $(this).closest(".pgoo");
+		var targetIndex = targetComponent.find(".sliderWrap").ixSlideMax("getCurrentIndex");
+		var slideLength = targetComponent.find(".sliderWrap").ixSlideMax("getTotalLength");
+		console.log(targetIndex);
+
+		targetComponent.find(".thumbGalleryList li").eq(targetIndex).addClass("on").siblings().removeClass("on");
+
+		// 슬라이드가 3으로 나눠떨어지지 않을 때 마지막 페이지 컨트롤
+		if (targetIndex == (slideLength - (slideLength % thumbPerItems) - 2)) {
+			//위치조정
+			targetComponent.find(".thumbGalleryList li").eq(targetIndex).click();
+		} else {
+			if ((targetIndex < (slideLength - (slideLength % thumbPerItems) - 1)) && (targetIndex % thumbPerItems) == 2) {
+				//thumbs pages slide to prev
+				targetComponent.find(".thumbsWrap .ix-btn-prev").click();
+			}
+		}
+	});
+
+	$(".pgoo .thumbGalleryList li").bind("click tab", function () {
+		var targetComponent = $(this).closest(".pgoo");
+		var targetIndex = $(this).index();
+
+		targetComponent.find(".sliderWrap").ixSlideMax("changeIndex", targetIndex);
+
+		if ($(this).width() > targetComponent.find(".thumbsWrap").width() - $(this).offset().left) {
+			targetComponent.find(".thumbsWrap").ixSlideMax("changeIndex", targetIndex);
+		} else {
+			if ($(this).offset().left < 0) {
+				targetComponent.find(".thumbsWrap").ixSlideMax("changeIndex", targetIndex - 2);
+			}
+		}
+
+		$(this).addClass("on").siblings().removeClass("on");
+	});
+
+	$(window).resize(function () {
+		$(".pgoo .sliderWrap").ixSlideMax("resize");
+		$(".pgoo .thumbsWrap").ixSlideMax("resize");
+	});
+})(jQuery);
+$(function () {
+	$(".thumbGalleryList li").first().addClass("on");
+	$(".galleryDown").click(function () {
+		var downLink = $(".GallerySliderList li[aria-hidden=false] picture img").attr("src");
+		$(this).prop('href', '/wsvc/in/download?file=' + downLink);
+		// $(this).attr("download",true);
+		//	$(this).prop('href', downLink);
+
+		//Analytics - ì�´ë¯¸ì§€ download ì‹œì—�
+		var links = downLink.split("/");
+		var imgName = links[links.length - 1];
+		_trackEvent(
+			$.extend({
+				image_name: imgName, // ì�´ë¯¸ì§€ ë‹¤ìš´ë¡œë“œì�˜ ê²½ìš°ì—�
+				page_event: {
+					image_download: true, // ì�´ë¯¸ì§€ ë‹¤ìš´ë¡œë“œ ì‹œì—�
+				}
+			}, _dl)
+		);
+	})
+});

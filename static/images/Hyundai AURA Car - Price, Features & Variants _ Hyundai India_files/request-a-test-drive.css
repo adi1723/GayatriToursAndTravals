@@ -1,0 +1,39 @@
+@media screen and (max-width: 767px){
+        .mobileBtn{
+            width:100% !important;
+        }
+        .sendBtn{
+            width: 45%;
+            margin-top:20px;
+        }
+        .resendBtn{
+            width:50%;
+            margin-top:20px;
+        }
+        .widFull{
+            width:100%;
+        }
+        .sendOtpBtn{
+			width:100% !important;
+		}
+		.widQuarter{
+    		width:100% !important;
+		}
+    }
+
+.widQuarter{
+    width:25%;
+}
+
+.termsCond{
+    text-decoration:underline;
+}
+.mobileBtn{
+	float: left;
+	width: 25%;
+	margin-right: 30px;
+}
+
+.sendOtpBtn{
+	width:60%;
+}

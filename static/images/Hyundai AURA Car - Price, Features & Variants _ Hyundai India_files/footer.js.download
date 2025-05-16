@@ -1,0 +1,155 @@
+$(document).ready(function(){
+
+//	_satellite.pageBottom();
+
+});
+function partner(e){
+dataLayer.push({
+    'event': e.innerText+'_share',
+    'pageName': window.location.origin + window.location.pathname,
+    'pageType': dataLayerPageType,
+    'banner_position': '',
+    'banner_title': '',
+    'buttonTitle': e.innerText,
+    'linkName': e.attributes[0].value,
+    'sectionName': 'Footer',
+    'customerEmail': sessionStorage.getItem('mdEmail')?sessionStorage.getItem('mdEmail'):'',
+    'customerMobile': sessionStorage.getItem('mdMobile')?sessionStorage.getItem('mdMobile'):'',
+    'carCategory': '',
+    'carModel': '',
+    'carModelVariant': '',
+    'carColour': '',
+    'carFuelType': '',
+    'transmission_type': '',
+    'ex_showroom_price': '',
+    'customerState': '',
+    'customerCity':  '',
+    'customerPincode': '',
+    'dealerName': '',
+    'dealershipType': '',
+    'customerGender': '',
+    'formSubmissionType': '',
+    'videoName': '',
+    'search_term': '',
+    'ga_client_id': ga_client_id,
+    'serviceType': '',
+    'ServiceAppointmentDate': '',
+    'ServiceAppointmentTime': '',
+    'socialLinkName': '',
+    'scrollPercentage': '',
+    'SHAmob': sessionStorage.getItem('shMob')?sessionStorage.getItem('shMob'):'',
+    'SHAemail': sessionStorage.getItem('shEmail')? sessionStorage.getItem('shEmail'):''})
+}
+function footerlinkClick(e){
+    dataLayer.push({
+    'event': 'Footer_click',
+    'pageName': window.location.origin + window.location.pathname,
+    'pageType': dataLayerPageType,
+    'banner_position': '',
+    'banner_title': '',
+    'buttonTitle': '',
+    'linkName': e.target.href,
+    'sectionName': e.target.innerText,
+    'customerEmail': sessionStorage.getItem('mdEmail')?sessionStorage.getItem('mdEmail'):'',
+    'customerMobile': sessionStorage.getItem('mdMobile')?sessionStorage.getItem('mdMobile'):'',
+    'carCategory': '',
+    'carModel': '',
+    'carModelVariant': '',
+    'carColour': '',
+    'carFuelType': '',
+    'transmission_type': '',
+    'ex_showroom_price': '',
+    'customerState': '',
+    'customerCity':  '',
+    'customerPincode': '',
+    'dealerName': '',
+    'dealershipType': '',
+    'customerGender': '',
+    'formSubmissionType': '',
+    'videoName': '',
+    'search_term': '',
+    'ga_client_id': ga_client_id,
+    'serviceType': '',
+    'ServiceAppointmentDate': '',
+    'ServiceAppointmentTime': '',
+    'socialLinkName': '',
+    'scrollPercentage': '',
+    'SHAmob': sessionStorage.getItem('shMob')?sessionStorage.getItem('shMob'):'',
+    'SHAemail': sessionStorage.getItem('shEmail')? sessionStorage.getItem('shEmail'):''})
+}
+$(document).ready(function(){
+
+	$.ajaxPrefilter(function (options, originalOptions, jqXHR) {
+
+		// do not send data for POST/PUT/DELETE
+		//if (originalOptions.type !== 'GET' || options.type !== 'GET') {return;}
+
+		var pathnm = $(location).attr('pathname');
+		var startidx = pathnm.indexOf('/content/hyundai/');
+		if(startidx < 0){ 
+			startidx = 1; // -1
+		} else {
+			startidx = 17; // /content/hyundai/
+		}
+		var tmp_path = pathnm.substr(startidx, pathnm.length);
+
+		var patharr = tmp_path.split("/");
+//		var loc = patharr[0];
+//		var lang = patharr[1];
+
+		var loc = "IN";
+		var lang = "en";
+		// console.log(loc);
+		// console.log(lang);
+		
+		//var loc = pathnm.substr(startidx, 2);
+		//var gtIdx = pathnm.indexOf('/'+loc+'/');
+		//var lang = pathnm.substr(gtIdx+4,2);
+
+		var data = originalOptions.data;
+		if (originalOptions.data !== undefined) {
+			if (Object.prototype.toString.call(originalOptions.data) === '[object String]') {
+				data = $.deparam(originalOptions.data); // see http://benalman.com/code/projects/jquery-bbq/examples/deparam/
+			}
+		} else {
+			data = {};
+		}
+		options.data = $.param($.extend(data, { loc:loc.toUpperCase(), lan:lang }));
+	});
+});
+
+addLoadEvent(function(){
+	if (!_isMobile()) {
+	//	$(".layerPop.share ul.shareList").append('<li class="btnPinterest"><a href="http://www.pinterest.com/pin/create/button/" type="pinterest" onClick="_satellite.trackEvent(\'pageshare\',\'pinterest\')" ></a></li>');
+	}
+
+	$(document).on('click',".shareList li a",function(e) {
+		e.preventDefault();
+		if ($(this).attr("href")) {
+			//var pageUrl = $('#canonical-setting-value').attr('href');
+			var pageUrl = window.location.href;
+			if(pageUrl.indexOf("#")>-1){
+				pageUrl = pageUrl.substring(0,pageUrl.indexOf("#"));
+				//console.log("pageUrl :: "+pageUrl);
+			}
+			var pageTitle = document.title;
+			var pageDesc = $('meta[name=description]').prop('content');
+			var pageImage = typeof $('meta[itemprop=image]').prop('content') != 'undefined' ? $('meta[itemprop=image]').prop('content') : "";
+			
+			var snsUrl = $(this).attr("href");
+			var snsType = $(this).attr("type");
+
+			if (snsType == 'facebook') {
+				snsUrl = snsUrl + "?u=" + encodeURIComponent(pageUrl) + "&t=" + encodeURIComponent(pageTitle)+ "&description=" + encodeURIComponent(pageDesc);
+			} else if (snsType == 'twitter') {
+				snsUrl = snsUrl + "?status=" + encodeURIComponent(pageDesc) + " " + encodeURIComponent(pageUrl);
+			} else if (snsType == 'google') {
+				snsUrl = snsUrl + "?url=" + encodeURIComponent(pageUrl) + "&t=" + encodeURIComponent(pageDesc);
+			} else if (snsType == 'pinterest') {
+				snsUrl = snsUrl + "?url=" + encodeURIComponent(pageUrl) + "&description=" + encodeURIComponent(pageDesc) + "&media=" + encodeURIComponent(pageImage);
+			}
+			
+			window.open(snsUrl, "snspop","width=800, height=500");
+		}
+	});    	 
+});

@@ -1,0 +1,321 @@
+/*
+	component : tooltip
+*/
+
+	$(document).ready(function(){
+	
+	var tooltipParam = {
+			trigger: 'custom',
+			triggerClose: {
+					click: true
+			},
+			interactive: true,
+			side: ['top', 'left', 'right', 'bottom'],
+			functionBefore: function(instance, helper){
+				var $origin = $(helper.origin);
+				$origin.addClass("on");
+			},
+			functionAfter: function(instance, helper){
+				var $origin = $(helper.origin);
+				$origin.removeClass("on");
+			}
+		};
+	
+	$(document).ready(function(){
+		
+		// 동적인 Element 가 모두 그려진 이후에 아래 코드를 실행(copy & paste) 
+		//$(".ic_Bquestion").tooltipster(tooltipParam);
+
+		var openedTooltip;
+		$(document).on("click",".ic_Bquestion",function(t){
+			$(this).tooltipster('open');
+			openedTooltip = $(this);
+		});
+
+		$(document).on("click",".tooltipster-box .btnClose",function(t){
+			$(openedTooltip).tooltipster('close');
+		});
+
+		
+		
+	});
+});
+
+/*
+	[PKVN] PIP Text Headline
+	used : jquery, tooltipster
+*/
+
+;(function ( $ ) {
+	
+	
+	$(document).ready(function(){
+		// init
+		
+		// Setting
+		// when videoAutoStop variable is true, if video is started, function of auto rolling will be stoped.
+		var videoAutoStop = true;
+		
+		// slideState : play, stop, playvideo, stopvideo,
+		var slideState  = "play";
+		
+		var slideComponentClass = ".sliderWrap.pkvn";
+		
+		
+		// IX Slider
+		var $slide = $(slideComponentClass).on('ixSlideMax:init', function(){
+			
+			// ix-slider autorolling and loop bug fix
+			// tooltipster on		
+			$(slideComponentClass + " .ix-clone").find(".ic_Bquestion").tooltipster({
+				trigger: 'click',
+				side: ['top', 'left', 'right', 'bottom'],
+				functionBefore: function(instance, helper){
+					var $origin = $(helper.origin);
+					$origin.addClass("on");
+				},
+				functionAfter: function(instance, helper){
+					var $origin = $(helper.origin);
+					$origin.removeClass("on");
+				}
+			});
+			
+			// data=tabindexon : ix slider 내 포커스될 아이템들의 tabindex 관리
+			ixSlider_focusItem_tabindexSwitcher();
+			
+			ixSlider_pagerCountControl();
+
+		}).ixSlideMax();
+		
+		$( window ).on( 'resize', function() {
+			$slide.ixSlideMax( 'resize' );
+		});
+		
+		// Slider 가 바뀌기 전에 호출
+		$(slideComponentClass).on('ixSlideMax:slideStart', function(){
+			// ix Slider slide start
+			
+			// close tooltip when sliding is started
+			$(slideComponentClass + " .ic_Bquestion.on").tooltipster("close");
+			
+			// stop html5 video when sliding is started
+			var slideIndex = $(slideComponentClass).ixSlideMax( "getCurrentIndex" );
+			var slideHtml5Video = $(slideComponentClass + " .ix-list-item").eq(slideIndex).find(".html5Video");
+			var slideVideo =  $(slideHtml5Video).find("video").get(0);
+			
+			// 이전 슬라이드가 html5 비디오가 있을 때
+			if(slideVideo){
+				if(slideState === "playvideo"){
+					slideVideo.pause();
+					
+					// show video cover & default image & play button
+					html5VideoCoverUIOn(slideHtml5Video);
+					
+					slideState = "play";
+					
+					// auto rolling on going
+					autoSlideBtnOn();
+					
+				} else if(slideState  === "stopvideo") {
+					slideState = "stop";
+					
+					// auto rolling stop
+					autoSlideBtnOff();
+				} else {
+					// auto rolling stop
+					html5VideoCoverUIOn(slideHtml5Video);
+				}
+			}
+			
+		});
+		
+		// ix-slider event : after slider changed
+		$(slideComponentClass).on('ixSlideMax:change', function(){			
+			// data=tabindexon : ix slider 내 포커스될 아이템들의 tabindex 관리
+			ixSlider_focusItem_tabindexSwitcher();
+		});
+		
+		// pager 갯수 채크 : 1개 이하 일 때  prev, next, pager 숨김
+		function ixSlider_pagerCountControl(){
+			var countSlideItems =$(slideComponentClass + " .ix-btn").length;
+			if(countSlideItems <= 1){
+				$(slideComponentClass + " .ix-btn-prev").hide();
+				$(slideComponentClass + " .ix-btn-next").hide();
+				$(slideComponentClass + " .ix-btn").hide();
+				$(slideComponentClass + " .slide_control").hide();
+			} else {
+				$(slideComponentClass + " .ix-btn-prev").show();
+				$(slideComponentClass + " .ix-btn-next").show();
+				$(slideComponentClass + " .ix-btn").show();
+				$(slideComponentClass + " .slide_control").show();
+			}
+		}
+		
+		// data=tabindexon : ix slider 내 포커스될 아이템들의 tabindex 관리
+		function ixSlider_focusItem_tabindexSwitcher(){
+			// tabindexon data가 true인 tabindex="-1"을 tabindex="0"으로 바꿈
+			$(slideComponentClass + ' .ix-list-items .ix-list-item[aria-hidden="true"] [data-tabindexon="true"]').attr("tabindex","-1");
+			$(slideComponentClass + ' .ix-list-items .ix-list-item[aria-hidden="false"]').each(function(){
+				//console.log("*data-tabindexon len : " + $(this).find("[data-tabindexon='true']").length);
+				$(this).find("[data-tabindexon='true']").attr("tabindex","0");
+			});
+		}
+		
+		// Auto Slide Button : Off
+		$(slideComponentClass + " .slide_control .btnStop").on("click", function(){
+			autoSlideBtnOff();
+
+			slideState  = "stop";
+		});
+		
+		// Auto Slide Button : On
+		$(slideComponentClass + " .slide_control .btnPlay").on("click", function(){
+			autoSlideBtnOn();
+
+			slideState  = "play";
+		});
+		
+		// auto slide button control : on
+		function autoSlideBtnOn(){
+			$slide.ixSlideMax("startTimer");
+			$(slideComponentClass + " .slide_control .btnStop").show();
+			$(slideComponentClass + " .slide_control .btnPlay").hide();
+		}
+		
+		// auto slide button control : off
+		function autoSlideBtnOff(){
+			$slide.ixSlideMax("stopTimer");
+			$(slideComponentClass + " .slide_control .btnStop").hide();
+			$(slideComponentClass + " .slide_control .btnPlay").show();
+		}
+		
+		// Html5VideoControl
+		var videoWrap = slideComponentClass + " .html5Video";
+		if($(videoWrap).length > 0)
+		{
+			
+			// Video Container click & tab
+			$(document).on("click tab", videoWrap, function(){
+				
+				var targetHtml5Video = $(this).find("video").get(0);
+				
+				// 비디오 종료 시
+				$(targetHtml5Video).on("ended",function(){
+					
+					var targetHtml5VideoWrap = $(this).closest(".html5Video");
+					$(this).currentTime = 0;
+					
+					// cover on
+					html5VideoCoverUIOn(targetHtml5VideoWrap);
+					
+					// 비디오 자동 멈춤 기능이 켜져 있을 때
+					if(videoAutoStop){
+						
+						// 슬라이드 자동 롤링 중이면서 비디오가 재생 중일 때
+						if(slideState === "playvideo"){
+							slideState = "play";
+							
+							setTimeout(function(){$slide.ixSlideMax("next");},2500);
+							autoSlideBtnOn();
+							
+						} else if(slideState === "stopvideo"){
+						
+							// 슬라이드 자동 롤링 중이 아니면서 비디오가 재생 중일 때
+							slideState = "stop";
+						}
+					}
+					
+				});
+				
+				// 비디오 클릭 시. 비디오가 멈춤 상태 또는 종료 상태 일 경우
+				if (targetHtml5Video.paused || targetHtml5Video.ended) {
+									
+					// cover off
+					if(targetHtml5Video.paused){
+						html5VideoCoverUIOff(this,true);
+					} else {
+						html5VideoCoverUIOff(this);
+					}
+					
+					targetHtml5Video.play();
+
+					// Auto Banner Rolling Stop
+					if(videoAutoStop){
+						if(slideState === "play"){
+							
+							autoSlideBtnOff();
+							slideState = "playvideo";
+							
+						} else if(slideState === "stop") {
+							slideState = "stopvideo";
+						}
+					}
+					
+				} else {
+					// 비디오 클릭 시. 비디오가 재생 중 일 경우
+					// cover on
+					html5VideoCoverUIOn(this,true);
+					targetHtml5Video.pause();
+				}
+			});
+
+		}
+		
+		// Video Cover(Dimmed), Default Image, PlayButton : On
+		function html5VideoCoverUIOn(t, pause){
+			var targetHtml5VideoContainer = $(t).find("video");
+			var html5Dim = $(t).find(".videoInnerDimm");
+			var html5DefaultImg = $(t).find(".videoPoster");
+			var playBtn = $(t).find(".videoPlayBtn");
+			
+			if(!pause){
+				targetHtml5VideoContainer.css("visibility", "hidden");
+				html5Dim.fadeIn();
+				html5DefaultImg.css("visibility", "visible");
+				playBtn.fadeIn();
+			} else {
+				playBtn.stop(true,true).show().fadeOut(800);
+			}
+			
+		}
+		
+		// Video Cover(Dimmed), Default Image, PlayButton : Off
+		function html5VideoCoverUIOff(t, pause){
+			var targetHtml5VideoContainer = $(t).find("video");
+			var html5Dim = $(t).find(".videoInnerDimm");
+			var html5DefaultImg = $(t).find(".videoPoster");
+			var playBtn = $(t).find(".videoPlayBtn");
+			
+			if(!pause){
+				targetHtml5VideoContainer.css("visibility", "visible");
+				html5Dim.fadeOut();
+				html5DefaultImg.css("visibility", "hidden");
+				playBtn.fadeOut();
+			} else {
+				targetHtml5VideoContainer.css("visibility", "visible");
+				html5Dim.fadeOut();
+				html5DefaultImg.css("visibility", "hidden");
+				playBtn.stop(true,true).show().fadeOut(800);
+			}
+		}
+		
+		$(document).on("keyup", slideComponentClass + " .visual", function(e){
+			var targetBtn = e.currentTarget;
+			
+			//var keyCode = e.keyCode || e.which;//키보드 코드값  
+			// Enter 키 번호 13
+			if (e.keyCode == '13' || e.keyCode == '32') {
+				if($(targetBtn).hasClass("html5Video")){
+					
+					// html5 video
+					$(targetBtn).trigger("click");
+					
+				}
+			}
+			
+		});
+      //  $(".ic_Bquestion").tooltipster(tooltipParam);
+
+	});
+
+})( jQuery );

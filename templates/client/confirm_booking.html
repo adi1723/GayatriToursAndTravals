@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Booking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .vehicle-details {
+            margin-bottom: 20px;
+        }
+        .vehicle-details h3 {
+            font-size: 24px;
+        }
+        .vehicle-details p {
+            font-size: 18px;
+            margin: 5px 0;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            font-size: 18px;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .btn {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>Confirm Your Booking</h1>
+            <p>Review your details before confirming the booking.</p>
+        </div>
+
+        <div class="vehicle-details">
+            <h3>{{ vehicle.make }} {{ vehicle.model }} ({{ vehicle.year }})</h3>
+            <img src="{{ url_for('static', filename=vehicle.image_url.replace('static/', '')) }}" alt="{{ vehicle.make }} {{ vehicle.model }}" class="vehicle-image" style="width: 100%; max-height: 400px; object-fit: cover; border-bottom: 2px solid #007bff;">
+            <p><strong>Description:</strong> {{ vehicle.description }}</p>
+            <p><strong>Rate:</strong> ₹{{ vehicle.rate }} / Km</p>
+            <p><strong>Availability:</strong> {% if vehicle.available %} Available {% else %} Not Available {% endif %}</p>
+        </div>
+
+        <form method="POST">
+            <div class="form-group">
+                <label for="booking_date">Booking Date:</label>
+                <input type="date" id="booking_date" name="booking_date" required>
+            </div>
+
+            <div class="form-group">
+                <label for="booking_time">Booking Time:</label>
+                <input type="time" id="booking_time" name="booking_time" required>
+            </div>
+
+            <div class="form-group">
+                <label for="duration">Duration (in hours):</label>
+                <input type="number" id="duration" name="duration" required>
+            </div>
+
+            <button type="submit" class="btn">Confirm Booking</button>
+        </form>
+    </div>
+
+</body>
+</html>
