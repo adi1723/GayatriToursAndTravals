@@ -186,7 +186,11 @@ def client_packages():
         client = Client.query.filter_by(email=session['client_email']).first()
         if client:
             client_name = client.first_name
+        print(f"client_name: {client_name}")
+    else:
+        print("No client_email in session")
     return render_template('client/client_packages.html', client_name=client_name)
+
 
 
 @app.route('/client/vehicles')

@@ -6,8 +6,9 @@
   <title>Luxury Cab Packages from Pune</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
-    /* Global Reset and Base */
-* {
+   @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+    
+    * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -19,6 +20,8 @@ body {
   color: #333;
 }
 
+
+    
 /* Top Bar */
 /* Reset some defaults */
 * {
@@ -119,6 +122,7 @@ body {
   margin-top: 2px;
 }
 
+
 /* Nav Links */
 .nav-links {
   list-style: none;
@@ -128,21 +132,20 @@ body {
 .nav-links li a {
   color: #ffffff;
   text-decoration: none;
-  font-size: 10px;
+  font-size: 25px;
   font-weight: 500;
-  padding: 6px 5px;
+  padding: 6px 20px;
   transition: background 0.3s ease;
 }
 
 .nav-links li a:hover {
   color: #243b55;
-  background-color: #243b55;
+  background-color: #549cef;
 }
-
     body {
       margin: 0;
       padding: 0;
-      background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+      background: #f4f4f4;
       font-family: 'Poppins', sans-serif;
       color: #fff;
       overflow-x: hidden;
@@ -173,7 +176,7 @@ body {
 
     .card {
       backdrop-filter: blur(10px);
-      background: rgba(255, 255, 255, 0.05);
+      background: linear-gradient(to right, #141e30, #243b55, #1a2a3a);
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 20px;
       overflow: hidden;
@@ -297,6 +300,146 @@ body {
         align-items: center;
       }
     }
+
+    
+/* Footer */
+.footer-modern {
+  background: linear-gradient(to right, #141e30, #243b55, #1a2a3a);
+  padding: 60px 40px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 50px;
+  color: #ffffff;
+  animation: fadeUp 1s ease-in-out forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.footer-section {
+  flex: 1 1 300px;
+  min-width: 250px;
+}
+
+.footer-section h3 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: #ffffff;
+  position: relative;
+}
+
+.footer-section h3::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 3px;
+  background-color: #00bcd4;
+  margin-top: 8px;
+  border-radius: 2px;
+}
+
+.route-columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.route-columns ul {
+  list-style: none;
+  padding: 0;
+  min-width: 160px;
+}
+
+.route-columns ul li {
+  margin-bottom: 10px;
+}
+
+.route-columns ul li a {
+  color: #dcdcdc;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.route-columns ul li a:hover {
+  color: #00bcd4;
+}
+
+.footer-section p,
+.footer-section p a {
+  margin: 6px 0;
+  line-height: 1.6;
+  font-size: 15px;
+  color: #dcdcdc;
+  text-decoration: none;
+}
+
+.footer-section p a:hover {
+  color: #00bcd4;
+}
+
+
+
+/* Animation */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-modern {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .route-columns {
+    justify-content: center;
+  }
+
+  .footer-section h3::after {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+/* Square Map Section */
+.footer-section.map-section {
+  flex: 1 1 300px;
+  min-width: 250px;
+  text-align: center;
+}
+
+#footer-map {
+  width: 100%;
+  height: 300px; /* fixed height */
+  max-width: 300px; /* makes it square */
+  margin: 0 auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+.no-line::after {
+  content: none !important;
+  
+}
+.no-line{
+  font-size: 22px;         /* Adjust as needed */
+  font-weight: 600;        /* Can be 700 for bolder text */
+  padding-bottom: 10px;    /* Adds space below the heading */
+  margin: 0;               /* Optional: reset margin */
+  color: #ffffff;  
+}
+
+
+
+@media (max-width: 480px) {
+  #footer-map {
+    height: 250px;
+    max-width: 250px;
+  }
+}
   </style>
 </head>
 <body>
@@ -467,6 +610,75 @@ body {
 </div>
   </div>
 </div>
+
+ <!-- Footer -->
+<footer class="footer-modern">
+  <div class="footer-section routes">
+    <h3>Popular Routes</h3>
+    <div class="route-columns">
+      <ul>
+        <li><a href="#">Pune to Mumbai</a></li>
+        <li><a href="#">Pune to Goa</a></li>
+        <li><a href="#">Mumbai to Delhi</a></li>
+        <li><a href="#">Delhi to Manali</a></li>
+        <li><a href="#">Hyderabad to Bangalore</a></li>
+      </ul>
+      <ul>
+        <li><a href="#">Chennai to Coimbatore</a></li>
+        <li><a href="#">Kolkata to Darjeeling</a></li>
+        <li><a href="#">Ahmedabad to Udaipur</a></li>
+        <li><a href="#">Jaipur to Jodhpur</a></li>
+        <li><a href="#">Nagpur to Pune</a></li>
+      </ul>
+      <ul>
+        <li><a href="#">Bangalore to Mysore</a></li>
+        <li><a href="#">Pune to Nashik</a></li>
+        <li><a href="#">Mumbai to Surat</a></li>
+        <li><a href="#">Delhi to Jaipur</a></li>
+        <li><a href="#">Chandigarh to Shimla</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-section contact">
+    <h3>Contact Us</h3>
+    <p><strong>Gayatri Tours & Travels</strong></p>
+    <p>Flat No 202 Swapnshilp Apartment<br>Abhinav College Road, Narhe, Pune 411041</p>
+    <p>Email: <a href="mailto:gayatritoursandtravels@gmail.com">gayatritoursandtravels@gmail.com</a></p>
+    <p>Phone: <a href="tel:+919022951550">+91 9022951550</a></p>
+  </div>
+
+  <div class="footer-section map-section">
+  <h4 class="no-line">📍 Our Location</h4>
+    <div id="footer-map"></div>
+  </div>
+</footer>
+
+<!-- Leaflet CDN -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<script>
+  
+  const lat = 18.43954;
+  const lng = 73.82887;
+
+  const map = L.map('footer-map').setView([lat, lng], 16);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  L.marker([lat, lng]).addTo(map)
+    .bindPopup('Gayatri Tours & Travels<br>Abhinav College Road, Narhe, Pune')
+    .openPopup();
+
+  setTimeout(() => {
+    map.invalidateSize();
+  }, 200);
+</script>
+
 
 <script>
   // Fade-in carousel per card
